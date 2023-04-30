@@ -150,6 +150,29 @@
 }
 
 
+/*gamesController.html*/
+#gamescontrol article div{
+    margin-right: 0px;
+    text-align: center;
+    margin: auto;
+}
+
+#gamescontrol article div img {
+    margin: 0 auto;
+    width: 50%;
+    height:50%;
+
+    
+}
+#gamescontrol article div {
+    margin: initial auto;
+    font-size: xx-large;
+    color: blueviolet;
+    text-align: center;
+}
+
+
+
 /*scrollbar*/
 ::-webkit-scrollbar {
     width: 6px;
