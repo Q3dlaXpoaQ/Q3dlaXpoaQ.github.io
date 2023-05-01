@@ -8,10 +8,24 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="images/icon.ico">
     <meta charset="utf-8">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body class="square" id="logs">
+    <script>
+        window.onload = function () {
+            var url = "datas.json"
+            var request = new XMLHttpRequest();
+            request.open("get", url);
+            request.send(null);
+            request.onload = function () {
+                var json = JSON.parse(request.responseText);
+                console.log(json);
+            }
+
+        }
+
+    </script>
     <article>
         <p>修改了拼写错误,并添加了一行页脚。</p>
         <div>--2023.4.30</div>
