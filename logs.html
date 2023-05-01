@@ -12,21 +12,10 @@
 </head>
 
 <body class="square" id="logs">
-    <script>
-        window.onload = function () {
-            var url = "datas.json"
-            var request = new XMLHttpRequest();
-            request.open("get", url);
-            request.send(null);
-            request.onload = function () {
-                var json = JSON.parse(request.responseText);
-                console.log(json);
-            }
-
-        }
-
-    </script>
-    <article>
+    <script src="script.js" ></script>
+    <script>functionforlogs();</script>
+    <!--用一个javascript实现了以下贼长的代码-->
+    <!--<article>
         <p>修改了拼写错误,并添加了一行页脚。</p>
         <div>--2023.4.30</div>
     </article>
@@ -74,7 +63,6 @@
     <article>
         <p>完成了menu</p>
         <div>--2023.4.20</div>
-    </article>
+    </article>-->
 </body>
-
 </html>
