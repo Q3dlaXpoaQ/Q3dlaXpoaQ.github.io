@@ -1,5 +1,6 @@
 /*mainSquare*/
 .square {
+    font-family: sans-serif;
     background-color: black;
 }
 
@@ -51,6 +52,7 @@
 }
 
 #index_header {
+    font-family: sans-serif;
     margin-left: 2%;
     margin-right: 2%;
     padding-left: 5px;
@@ -80,6 +82,7 @@
 }
 
 .index_body p {
+    font-family: sans-serif;
     border-left: 3px solid blueviolet;
     padding-left: 7px;
     font-size: large;
