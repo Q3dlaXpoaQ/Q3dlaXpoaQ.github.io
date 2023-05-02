@@ -42,7 +42,8 @@ function rendering_forrecord() {
                 if (json[listnumber]["see_more"] != null) {
                     let now_number = listnumber;
                     let link_a = document.createElement("a");
-                    link_a.innerHTML = "————>>";
+                    link_a.innerHTML = "----->";
+                    article.title="查看详情";
                     article.onmousemove = function () {
                         document.body.style.cursor = "pointer";
                         article.style = "margin-left: 19.2%;margin-right: 20.8%;"
