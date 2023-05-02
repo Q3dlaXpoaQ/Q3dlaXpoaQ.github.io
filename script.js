@@ -45,7 +45,7 @@ function rendering_forrecord() {
                     link_a.innerHTML = "————>>";
                     article.onmousemove = function () {
                         document.body.style.cursor = "pointer";
-                        article.style = "margin-left: 18%;margin-right: 22%;"
+                        article.style = "margin-left: 19.2%;margin-right: 20.8%;"
                     };
                     article.onmouseout = function () {
                         document.body.style.cursor = "auto";
@@ -93,7 +93,15 @@ function rendering_forrecord_pages() {
             for (var img_number in json["img"]) {
                 let img = document.createElement("img");
                 img.src = json["img"][img_number]["img_url"];
-                console.log(json["img"][img_number]["img_url"]);
+                img.onclick=function(){
+                    window.open(json["img"][img_number]["img_url"]);
+                };
+                img.onmousemove = function () {
+                    document.body.style.cursor = "pointer";
+                };
+                img.onmouseout = function () {
+                    document.body.style.cursor = "auto";
+                };
                 let pos_p = document.getElementById("p" + json["img"][img_number]["postion"]);
                 document.body.insertBefore(img, pos_p.nextSibling);
             }
