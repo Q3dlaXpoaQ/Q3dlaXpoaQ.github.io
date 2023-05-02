@@ -16,7 +16,6 @@
 }
 
 
-
 /*index.html*/
 .index_menu {
     height: 100%;
@@ -155,7 +154,7 @@
 
 
 /*gamesController.html*/
-#gamescontrol article div{
+#gamescontrol article div {
     margin-right: 0px;
     text-align: center;
     margin: auto;
@@ -164,10 +163,11 @@
 #gamescontrol article div img {
     margin: 0 auto;
     width: 50%;
-    height:50%;
+    height: 50%;
 
-    
+
 }
+
 #gamescontrol article div {
     margin: initial auto;
     font-size: xx-large;
@@ -175,6 +175,39 @@
     text-align: center;
 }
 
+
+/*record渲染*/
+.record_rendering {
+    background-color: black;
+    font-size: medium;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 13%;
+    margin-right: 13%;
+}
+
+.record_rendering p {
+    color: rgba(255, 255, 255, 0.938);
+}
+
+.record_rendering img {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 3px solid rgba(137, 43, 226, 0.712);
+    width: 40%;
+    height: 40%;
+}
+
+.record_rendering p a {
+    color: blueviolet;
+}
+
+.record_rendering h1 {
+    color: rgba(137, 43, 226, 0.822);
+}
+.record_rendering img::selection{
+    background-color: rgba(240, 248, 255, 0);
+}
 
 
 /*scrollbar*/
@@ -197,28 +230,12 @@
 }
 
 
-/*record渲染*/
-.record_rendering{
-    background-color: black;
-    font-size: medium;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-left: 13%;
-    margin-right: 13%;
+/*选中字颜色*/
+::-moz-selection {
+    color: rgba(160, 159, 157, 0.959);
+    background: rgba(107, 107, 107, 0.301);
 }
-.record_rendering p{
-    color: rgba(255, 255, 255, 0.938);
-}
-.record_rendering img{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 3px solid blueviolet;
-    width: 40%;
-    height: 40%;
-}
-.record_rendering p a{
-    color: blueviolet;
-}
-.record_rendering h1{
-    color: rgba(137, 43, 226, 0.822);
+
+::selection {
+    background: rgba(112, 0, 218, 0.712)
 }
