@@ -1,0 +1,46 @@
+{
+    "record_javascript读取json问题": [
+        {
+            "title": "关于javascript读取json代码中遇到的问题",
+            "text": [
+                "在我写javascript获取json脚本的时候,总是会遇到很离谱的报错。",
+                "在搜集了一堆资料过后,我知道了要用IIS来创建一个本地服务器,因为<a>https://code.jquery.com/jquery-3.6.4.min.js</a>只能在http下运行。(可以自己搜资料如何使用IIS)。"
+            ],
+            "img": [
+                {
+                    "postion": 0,
+                    "img_url": "images/blogs_img/javascript读取json报错/1.png"
+                }
+            ]
+        }
+    ],
+    "record_使用javascript+json渲染网页":[
+        {
+            "title":"使用javascript+json渲染网页",
+            "text":[
+                "这个技术是我自己构想出来的,不知道有没有更加简便的方法。因为这个项目耗费了我一天半的时间,所以一开始并不打算公开。但最后决定还是让这个技术让更多人知道。此技术完全是根据构想写出来的,没有借鉴网上别人的代码(估计很多人的想法和我一样)<br>",
+                "这项技术的关键点是读取json",
+                "如图代码为主要核心。这里面有个关键,就是在html中的head中要加入如图代码:",
+                "接下来就只用在javascript中增加一个<a>for</a>,遍历json中的每一项,并用js脚本将它们变为html元素,加入到主html中去",
+                "这样一个简单的架构就搭建好了,这里要注意,css的元素要与js脚本创建的元素对应,不能js创建一个<a>p</a>,css对应的是<a>b</a> ",
+                "最后再与json文件结合,优化自己的代码。<br>",
+                "tips:<a>在引用图片的时候,我貌似发现文件名不能太长,不知道是IIS的问题还是js特性</a>",
+                "如有疑惑可联系:C_wz__@outlook.com"
+            ],
+            "img":[
+                {
+                    "postion":1,
+                    "img_url":"images/blogs_img/javascript渲染网页/1.png"
+                },
+                {
+                    "postion":2,
+                    "img_url":"images/blogs_img/javascript渲染网页/2.png"
+                },{
+                    "postion":3,
+                    "img_url":"images/blogs_img/javascript渲染网页/3.png"
+                }
+
+            ]
+        }
+    ]
+}

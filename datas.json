@@ -1,6 +1,10 @@
 {
     "logs": [
         {
+            "time":"2023.5.2",
+            "log":"大更新:花了一个上午的时间,成功将record的javascript渲染写好了。"
+        },
+        {
             "time": "2023.5.1",
             "log": "经过半天的查找资料与代码,现在能仅仅用一个.json与javascript相配合,将所有的内容包括在内。这样能减少很多行代码。"
         },
@@ -23,8 +27,15 @@
     ],
     "record": [
         {
+            "time": "2023.5.2",
+            "thing": "将如何用javascript渲染网页技术上传于此,供学习和借鉴",
+            "see_more": "record_使用javascript+json渲染网页"
+        },
+
+        {
             "time": "2023.5.1",
-            "thing": "将网站的结构进行了大的更新,把javascript的巨大作用体现了出来,更新后内容的更新将节省我很多代码和精力。"
+            "thing": "将网站的结构进行了大的更新,把javascript的巨大作用体现了出来,更新后内容的更新将节省我很多代码和精力。",
+            "see_more": "record_javascript读取json问题"
         },
         {
             "time": "2023.4.30",

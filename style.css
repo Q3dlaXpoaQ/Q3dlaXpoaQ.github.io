@@ -1,7 +1,7 @@
 /*mainSquare*/
 .square {
-    font-family: sans-serif;
     background-color: black;
+    font-family: sans-serif;
 }
 
 .square article {
@@ -64,6 +64,7 @@
 }
 
 .index_body {
+    font-family: sans-serif;
     height: 110%;
     background-color: black;
     margin: 0;
@@ -82,7 +83,6 @@
 }
 
 .index_body p {
-    font-family: sans-serif;
     border-left: 3px solid blueviolet;
     padding-left: 7px;
     font-size: large;
@@ -93,6 +93,7 @@
 }
 
 .index_body p span {
+    font-family: sans-serif;
     color: blueviolet;
 }
 
@@ -193,4 +194,31 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(137, 43, 226, 0.849);
     cursor: pointer;
+}
+
+
+/*record渲染*/
+.record_rendering{
+    background-color: black;
+    font-size: medium;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 13%;
+    margin-right: 13%;
+}
+.record_rendering p{
+    color: rgba(255, 255, 255, 0.938);
+}
+.record_rendering img{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 3px solid blueviolet;
+    width: 40%;
+    height: 40%;
+}
+.record_rendering p a{
+    color: blueviolet;
+}
+.record_rendering h1{
+    color: rgba(137, 43, 226, 0.822);
 }

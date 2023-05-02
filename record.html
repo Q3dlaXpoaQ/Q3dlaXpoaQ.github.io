@@ -1,29 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN"> <!--Remember to add it-->
+<html lang="zh-CN">
 
 <head>
+    <title>
+       records
+    </title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="shortcut icon" href="images/icon.ico">
-    <title>My daily record</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
-
-<body class="square" id="record">
-    <article>
-        <a>2023.4.30</a>
-        <p>经过表哥的指点,我将此网站成功上传到github。</p>
-    </article>
-    <article>
-        <a>2023.4.30</a>
-        <p>如果你对我的名字感到好奇,你可以尝试在我的id后面+“==”,并试着用一下base64解码。(doge</p>
-    </article>
-    <article>
-        <a>2023.4.29</a>
-        <p>期中考试的成绩不如人意,希望期末可以有所进步。</p>
-    </article>
-    <article>
-        <a>2023.4.28</a>
-        <p>花了我一周时间,总算是把这个网站搭建好了。我将来会在这个网站上发表更多内容,敬请期待。</p>
-    </article>
+<body class="record_rendering">
+    <script src="script.js" ></script>
+    <script>rendering_forrecord_pages();</script>
 </body>
 
 </html>
