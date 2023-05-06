@@ -1,3 +1,12 @@
+const Toast = Swal.mixin({
+    width: 470,
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+})
+
+
+
 function rendering_forlogs() {
     window.onload = function () {
         var url = "datas.json"
@@ -43,7 +52,7 @@ function rendering_forrecord() {
                     let now_number = listnumber;
                     let link_a = document.createElement("a");
                     link_a.innerHTML = "----->";
-                    article.title="查看详情";
+                    article.title = "查看详情";
                     article.onmousemove = function () {
                         document.body.style.cursor = "pointer";
                         article.style = "margin-left: 19.2%;margin-right: 20.8%;"
@@ -70,12 +79,12 @@ function rendering_forrecord_pages() {
         record_name = sessionStorage.getItem('record_name');
     }
     else {
-        record_name =localStorage.getItem('record_name');
+        record_name = localStorage.getItem('record_name');
         sessionStorage.setItem('record_name', record_name);
         localStorage.clear();
     };
     window.onload = function () {
-        var url = "records.json"
+        var url = "records.json";
         var request = new XMLHttpRequest();
         request.open("get", url);
         request.send(null);
@@ -94,7 +103,7 @@ function rendering_forrecord_pages() {
             for (var img_number in json["img"]) {
                 let img = document.createElement("img");
                 img.src = json["img"][img_number]["img_url"];
-                img.onclick=function(){
+                img.onclick = function () {
                     window.open(json["img"][img_number]["img_url"]);
                 };
                 img.onmousemove = function () {
@@ -108,4 +117,42 @@ function rendering_forrecord_pages() {
             }
         }
     }
+}
+
+function recordtime() {
+    window.onload = function () {
+        var json;
+        var request = new XMLHttpRequest();
+        request.open("get", "datas.json");
+        request.send(null);
+        request.onload = function () {
+            json = JSON.parse(request.responseText).update_time[0];
+            let now_time = new Date();
+            let last_update_date = new Date(json["time"]);
+            let last_time = new Date(localStorage.getItem('last_time'));
+            console.log(now_time);
+            console.log(last_update_date);
+            console.log(last_time);
+            if (localStorage.getItem('last_time') != null) {
+                if (last_update_date > last_time) {
+                    Toast.fire({
+                        title: 'Welcome baak,this website has been updated'
+                    })
+                }
+                else {
+                    Toast.fire({
+                        title: 'Welcome back'
+                    })
+                }
+                localStorage.setItem("last_time", now_time);
+            }
+            else {
+                Toast.fire({
+                    title: 'Welcome to my website'
+                })
+                localStorage.setItem("last_time", now_time);
+            }
+        };
+    }
+
 }
