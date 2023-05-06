@@ -51,6 +51,7 @@
 }
 
 #index_header {
+    height: 100%;
     font-family: sans-serif;
     margin-left: 2%;
     margin-right: 2%;
@@ -64,7 +65,7 @@
 
 .index_body {
     font-family:Arial, Helvetica, sans-serif;
-    height: 110%;
+    height: 100%;
     background-color: black;
     margin: 0;
     color: white;
@@ -72,7 +73,6 @@
 
 .index_body h1 {
     font-size:xx-large;
-    letter-spacing:0.7px;
     color: rgb(201, 198, 198);
     margin-top: 100px;
     margin-left: 10%;
@@ -84,8 +84,8 @@
 }
 
 .index_body p {
+    line-height: 125%;
     border-left: 3px solid blueviolet;
-    letter-spacing: 0.3px;
     padding-left: 7px;
     font-size: larger;
     color: rgb(201, 198, 198);
@@ -95,6 +95,7 @@
 }
 
 .index_body p span {
+    font-size: inherit  ;
     font-family: sans-serif;
     color: blueviolet;
 }
