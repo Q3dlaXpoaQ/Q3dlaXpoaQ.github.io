@@ -63,7 +63,7 @@
 }
 
 .index_body {
-    font-family: sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     height: 110%;
     background-color: black;
     margin: 0;
@@ -71,6 +71,8 @@
 }
 
 .index_body h1 {
+    font-size:xx-large;
+    letter-spacing:0.7px;
     color: rgb(201, 198, 198);
     margin-top: 100px;
     margin-left: 10%;
@@ -83,8 +85,9 @@
 
 .index_body p {
     border-left: 3px solid blueviolet;
+    letter-spacing: 0.3px;
     padding-left: 7px;
-    font-size: large;
+    font-size: larger;
     color: rgb(201, 198, 198);
     margin-bottom: 30px;
     margin-left: 10%;
@@ -194,6 +197,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border: 3px solid rgba(137, 43, 226, 0.712);
+    border-radius: 5px;
     width: 40%;
     height: 40%;
 }
@@ -232,10 +236,9 @@
 
 /*选中字颜色*/
 ::-moz-selection {
-    color: rgba(160, 159, 157, 0.959);
-    background: rgba(107, 107, 107, 0.301);
+    background: rgba(112, 0, 218, 0.712);
 }
 
 ::selection {
-    background: rgba(112, 0, 218, 0.712)
+    background: rgba(112, 0, 218, 0.712);
 }
