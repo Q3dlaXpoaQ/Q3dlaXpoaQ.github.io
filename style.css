@@ -1,10 +1,11 @@
 /*mainSquare*/
 .square {
     background-color: black;
-    font-family: sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .square article {
+    height: 100%;
     box-shadow: 2px 2px 5px rgba(134, 8, 252, 0.815);
     margin-top: 40px;
     margin-bottom: 40px;
@@ -141,16 +142,19 @@
 
 
 /*record.html*/
+#record{
+    line-height: 85%;
+}
 #record p {
     padding-left: 10px;
     padding-right: 5px;
     color: rgba(255, 255, 255, 0.938);
 }
 
-#record a {
+#record div {
     box-shadow: initial;
-    padding-left: 10px;
     padding-top: 4px;
+    padding-left: 10px;
     border: initial;
     margin: initial;
     color: rgba(255, 255, 255, 0.726);
@@ -182,6 +186,7 @@
 
 /*record渲染*/
 .record_rendering {
+    font-family: sans-serif;
     background-color: black;
     font-size: medium;
     margin-top: 40px;
