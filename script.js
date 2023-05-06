@@ -41,17 +41,17 @@ function rendering_forrecord() {
             for (var listnumber in json) {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
-                let a = document.createElement("a");
+                let div = document.createElement("div");
                 p.innerHTML = json[listnumber]["thing"];
-                a.innerHTML = json[listnumber]["time"];
+                div.innerHTML = json[listnumber]["time"];
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
-                article.insertAdjacentElement("afterbegin", a);
+                article.insertAdjacentElement("afterbegin", div);
                 console.log(listnumber)
                 if (json[listnumber]["see_more"] != null) {
                     let now_number = listnumber;
-                    let link_a = document.createElement("a");
-                    link_a.innerHTML = "----->";
+                    let link_div = document.createElement("div");
+                    link_div.innerHTML = "----→";
                     article.title = "查看详情";
                     article.onmousemove = function () {
                         document.body.style.cursor = "pointer";
@@ -61,7 +61,7 @@ function rendering_forrecord() {
                         document.body.style.cursor = "auto";
                         article.style = "margin-left: 20%;margin-right: 20%;"
                     };
-                    article.insertAdjacentElement("beforeend", link_a);
+                    article.insertAdjacentElement("beforeend", link_div);
                     article.onclick = function () {
                         window.open('record.html');
                         localStorage.setItem("record_name", json[now_number]["see_more"]);
