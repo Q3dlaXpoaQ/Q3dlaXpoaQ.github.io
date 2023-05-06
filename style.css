@@ -151,7 +151,7 @@
     color: rgba(255, 255, 255, 0.938);
 }
 
-#record div {
+#record article div {
     box-shadow: initial;
     padding-top: 4px;
     padding-left: 10px;
