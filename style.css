@@ -72,15 +72,17 @@
     color: white;
 }
 
-.index_body h1 {
-    font-size:xx-large;
+.index_body article {
+    margin-bottom: 20px;
+    font-weight: bolder;
+    font-size:33px;
     color: rgb(201, 198, 198);
     margin-top: 100px;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.index_body h1 span {
+.index_body article span {
     color: blueviolet;
 }
 
@@ -143,7 +145,7 @@
 
 /*record.html*/
 #record{
-    line-height: 115%;
+    line-height: 110%;
 }
 #record p {
     padding-left: 10px;
@@ -195,7 +197,7 @@
     margin-right: 13%;
 }
 
-.record_rendering p {
+.record_rendering p{
     color: rgba(255, 255, 255, 0.938);
 }
 
