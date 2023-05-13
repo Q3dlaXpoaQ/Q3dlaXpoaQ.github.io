@@ -82,7 +82,7 @@
     margin-right: 10%;
 }
 
-.index_body article,h1 span {
+.index_body article span,h1 span {
     color: blueviolet;
 }
 
