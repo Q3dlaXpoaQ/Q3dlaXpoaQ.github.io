@@ -72,7 +72,7 @@
     color: white;
 }
 
-.index_body article {
+.index_body article,h1{
     margin-bottom: 20px;
     font-weight: bolder;
     font-size:33px;
@@ -82,7 +82,7 @@
     margin-right: 10%;
 }
 
-.index_body article span {
+.index_body article,h1 span {
     color: blueviolet;
 }
 
