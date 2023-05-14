@@ -51,8 +51,9 @@
                 "由于未知原因,Github Pages把百度爬虫禁了,Google大陆又不能访问,所以Bing是个很好的决定。",
                 "我们首先先进入bing站长工具 <a href=https://www.bing.com/webmasters/ target='_blank'>https://www.bing.com/webmasters/</a>,选择一个方式登陆,再在url位置填写你的Github Pages网址。如图:",
                 "不出意外的话,当我们点击url检查时,会遇到这样的情况:",
-                "首先我们应该点击实时url,根据所弹的提示让网站通过SEO测试。随后,我们需要增加一个robots.txt文件(可以上网查),使Bing机器人能够爬取你的网站。",
-                "最后,我们给Bing工作人员发邮件:<a href=https://www.bing.com/webmasters/support target='_blank'>https://www.bing.com/webmasters/support</a>,他们会把你的网站收录进去。"
+                "首先我们应该点击<a>实时url</a>,根据所弹的提示让网站通过SEO测试。随后,我们需要增加一个robots.txt文件(可以上网查),使Bing机器人能够爬取你的网站。",
+                "最后,我们给Bing工作人员发邮件:<a href=https://www.bing.com/webmasters/support target='_blank'>https://www.bing.com/webmasters/support</a>,他们会把你的网站收录进去。",
+                "如有疑惑可联系:C_wz__@outlook.com"
             ],
             "img": [
                 {
@@ -64,7 +65,8 @@
                     "img_url":"images/blogs_img/使website能被搜索引擎搜到/2.png"
                 },
                 {
-
+                    "postion":4,
+                    "img_url":"images/blogs_img/使website能被搜索引擎搜到/3.png"
                 }
             ]
         }
