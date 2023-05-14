@@ -81,7 +81,7 @@ function rendering_forrecord_pages() {
     else {
         record_name = localStorage.getItem('record_name');
         sessionStorage.setItem('record_name', record_name);
-        localStorage.clear();
+        localStorage.removeItem("record_name");
     };
     window.onload = function () {
         var url = "records.json";
