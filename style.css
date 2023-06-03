@@ -189,6 +189,33 @@
 }
 
 
+#Download{
+    line-height: 110%;
+}
+#Download p {
+    padding-left: 10px;
+    padding-right: 5px;
+    color: rgba(255, 255, 255, 0.938);
+}
+
+#Download article div a {
+    box-shadow: initial;
+    line-height: 120%;
+    border: initial;
+    margin: initial;
+    color: rgba(255, 255, 255, 0.726);
+}
+#Download article div {
+    box-shadow: initial;
+    text-align:right;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    padding-right: 5px;
+    border: initial;
+    margin: initial;
+    color: rgba(255, 255, 255, 0.726);
+}
+
 /*record渲染*/
 .record_rendering {
     font-family: sans-serif;

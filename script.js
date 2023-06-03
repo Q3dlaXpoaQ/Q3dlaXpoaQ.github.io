@@ -1,13 +1,4 @@
-const Toast = Swal.mixin({
-    width: 470,
-    toast: true,
-    position: 'bottom-end',
-    showConfirmButton: false,
-})
-
-
-
-function rendering_forlogs() {
+function rendering_forLogs() {
     window.onload = function () {
         var url = "datas.json"
         var request = new XMLHttpRequest();
@@ -25,12 +16,12 @@ function rendering_forlogs() {
                 article.insertAdjacentElement("afterbegin", p);
                 article.insertAdjacentElement("beforeend", div);
             };
+
         }
     }
 }
 
-
-function rendering_forrecord() {
+function rendering_forRecord() {
     window.onload = function () {
         var url = "datas.json"
         var request = new XMLHttpRequest();
@@ -73,12 +64,11 @@ function rendering_forrecord() {
 }
 
 
-function rendering_forrecord_pages() {
+function rendering_forRecord_Pages() {
     var record_name = null;
     if (sessionStorage.getItem("record_name") != null) {
         record_name = sessionStorage.getItem('record_name');
-    }
-    else {
+    } else {
         record_name = localStorage.getItem('record_name');
         sessionStorage.setItem('record_name', record_name);
         localStorage.removeItem("record_name");
@@ -120,6 +110,12 @@ function rendering_forrecord_pages() {
 }
 
 function recordtime() {
+    const Toast = Swal.mixin({
+        width: 470,
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+    })
     window.onload = function () {
         var json;
         var request = new XMLHttpRequest();
@@ -128,6 +124,7 @@ function recordtime() {
         request.onload = function () {
             json = JSON.parse(request.responseText).update_time[0];
             let now_time = new Date();
+            console.log(now_time.toString().slice(0, 10));
             let last_update_date = new Date(json["time"]);
             let last_time = new Date(localStorage.getItem('last_time'));
             console.log(now_time);
@@ -138,21 +135,90 @@ function recordtime() {
                     Toast.fire({
                         title: 'Welcome baak,this website has been updated'
                     })
-                }
-                else {
+                } else {
                     Toast.fire({
                         title: 'Welcome back'
                     })
                 }
                 localStorage.setItem("last_time", now_time);
-            }
-            else {
+            } else {
                 Toast.fire({
                     title: 'Welcome to my website'
                 })
                 localStorage.setItem("last_time", now_time);
             }
         };
+    }
+
+}
+
+function rendering_forDownload() {
+    var info_json;
+    $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/git/trees/e32b4ba92adeb741b1b464be66c6f16308e8e7d9", function (data) {
+        info_json = data["tree"];
+        for (file_number in info_json) {
+            let num = file_number
+            let article = document.createElement("article");
+            let p = document.createElement("p");
+            let a = document.createElement("a");
+            let br = document.createElement("br");
+            let div = document.createElement("div")
+
+
+            a.innerHTML = "下载";
+            a.setAttribute('href', "javascript:void(0);")
+            a.onclick = function () {
+                let a = document.createElement("a");
+                a.style.display = 'none';
+                a.href = "https://gitee.com/q3dlaxpoaq/Cloud/releases/download/Cloud/" + info_json[num]['path']
+                a.download = info_json[num]['path'];
+                document.body.appendChild(a)
+                a.click();
+                document.body.removeChild(a);
+            }
+            p.innerHTML = info_json[num]["path"]
+
+
+            document.body.append(article);
+            article.insertAdjacentElement("beforeend", p);
+            article.insertAdjacentElement("beforeend", div)
+            div.insertAdjacentElement("beforeend", a)
+            div.insertAdjacentElement("beforeend", br)
+        }
+    })
+}
+
+async function LoginCloud() {
+    window.onload = async function () {
+        if (localStorage.getItem('Is_Login') != 'true') {
+            var {
+                value: input_password
+            } = await Swal.fire({
+                title: '请输入管理员密码',
+                input: 'password',
+                inputLabel: 'Password',
+                inputPlaceholder: '请输入管理员密码',
+                inputAttributes: {
+                    maxlength: 10,
+                    autocapitalize: 'off',
+                    autocorrect: 'off'
+                }
+            })
+            let now_time = new Date();
+            now_time = now_time.toString();
+            if (input_password === null) {
+                window.close();
+            }
+            if (input_password === now_time.slice(0, 10)) {
+                rendering_forDownload();
+                localStorage.setItem('Is_Login', 'true')
+            } else {
+                window.close();
+            }
+        } else {
+            rendering_forDownload();
+        }
+
     }
 
 }
