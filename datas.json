@@ -1,7 +1,7 @@
 {
     "update_time": [
         {
-            "time": "Sat Jun 03 2023 21:30:00 GMT+0800"
+            "time": "Sun Jun 04 2023 21:30:00 GMT+0800"
         }
     ],
     "logs": [
@@ -59,6 +59,11 @@
         }
     ],
     "record": [
+        {
+            "time":"2023.6.4",
+            "thing":"如何使用Github作为云盘(虽然不道德)",
+            "see_more":"使用Github作为云盘"
+        },
         {
             "time": "2023.5.14",
             "thing": "将网站上传至bing,使其能被搜索引擎搜到(目前仅Bing)。",
