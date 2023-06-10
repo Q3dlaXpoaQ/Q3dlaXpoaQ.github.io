@@ -156,7 +156,7 @@ function recordtime() {
 
 function rendering_forDownload() {
     if (localStorage.getItem('Download_Api') == null) {
-        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/git/trees/e32b4ba92adeb741b1b464be66c6f16308e8e7d9", function (data) {
+        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/git/trees/cd52ad49bab714106fa18244ee52858a1a4c229d", function (data) {
             CreateDownload(data);
             localStorage.setItem('Download_Api', JSON.stringify(data))
             console.log('use api')
@@ -238,6 +238,7 @@ function CreateDownload(data) {
         div.insertAdjacentElement("beforeend", br)
     }
     let div = document.createElement('div')
+    div.id='RefreshDiv'
     let img = document.createElement('img')
     img.src = 'images/refresh.png'
     img.style.width = '100%';
