@@ -1,0 +1,93 @@
+{
+    "record_javascript读取json问题": [{
+        "title": "关于javascript读取json代码中遇到的问题",
+        "text": [
+            "在我写javascript获取json脚本的时候,总是会遇到很离谱的报错。",
+            "在搜集了一堆资料过后,我知道了要用IIS来创建一个本地服务器,因为<a>https://code.jquery.com/jquery-3.6.4.min.js</a>只能在http下运行。(可以自己搜资料如何使用IIS)。"
+        ],
+        "img": [{
+            "postion": 0,
+            "img_url": "images/blogs_img/javascript读取json报错/1.png"
+        }]
+    }],
+    "record_使用javascript+json渲染网页": [{
+        "title": "使用javascript+json渲染网页",
+        "text": [
+            "这个技术是我自己构想出来的,不知道有没有更加简便的方法。因为这个项目耗费了我一天半的时间,所以一开始并不打算公开。但最后决定还是让这个技术让更多人知道。此技术完全是根据构想写出来的,没有借鉴网上别人的代码(估计很多人的想法和我一样)<br>",
+            "这项技术的关键点是读取json。这里注意,我们先要<a>开启IIS或使用Vscode中的Live Server插件,这样使jquery不会报错</a>(可上网查)",
+            "如图代码为主要核心。这里面有个关键,就是在html中的head中要加入如图代码以<a>开启jQuery</a>:",
+            "接下来就只用在javascript中增加一个<a>for</a>,遍历json中的每一项,并用js脚本将它们变为html元素,加入到主html中去",
+            "这样一个简单的架构就搭建好了,这里要注意,css的元素要与js脚本创建的元素对应,不能js创建一个<a>p</a>,css对应的是<a>b</a> ",
+            "最后再与json文件结合,优化自己的代码。<br>",
+            "tips:<a>在引用图片的时候,我貌似发现文件名不能太长,不知道是IIS的问题还是js特性</a>",
+            "如有疑惑可联系:C_wz__@outlook.com"
+        ],
+        "img": [{
+                "postion": 1,
+                "img_url": "images/blogs_img/javascript渲染网页/1.png"
+            },
+            {
+                "postion": 2,
+                "img_url": "images/blogs_img/javascript渲染网页/2.png"
+            },
+            {
+                "postion": 3,
+                "img_url": "images/blogs_img/javascript渲染网页/3.png"
+            }
+        ]
+    }],
+    "使website能被搜索引擎搜到": [{
+        "title": "如何使website能被Bing搜到",
+        "text": [
+            "一个网站有域名还不够,只有能被搜索引擎搜到,才能被更多人了解。所以我将此网站上传至bing,使其能被搜索引擎搜到",
+            "由于未知原因,Github Pages把百度爬虫禁了,Google大陆又不能访问,所以Bing是个很好的决定。",
+            "我们首先先进入bing站长工具 <a href=https://www.bing.com/webmasters/ target='_blank'>https://www.bing.com/webmasters/</a>,选择一个方式登陆,再在url位置填写你的Github Pages网址。如图:",
+            "不出意外的话,当我们点击url检查时,会遇到这样的情况:",
+            "首先我们应该点击<a>实时url</a>,根据所弹的提示让网站通过SEO测试。随后,我们需要增加一个robots.txt文件(可以上网查),使Bing机器人能够爬取你的网站。",
+            "最后,我们给Bing工作人员发邮件:<a href=https://www.bing.com/webmasters/support target='_blank'>https://www.bing.com/webmasters/support</a>,他们会把你的网站收录进去。",
+            "如有疑惑可联系:C_wz__@outlook.com"
+        ],
+        "img": [{
+                "postion": 2,
+                "img_url": "images/blogs_img/使website能被搜索引擎搜到/1.png"
+            },
+            {
+                "postion": 3,
+                "img_url": "images/blogs_img/使website能被搜索引擎搜到/2.png"
+            },
+            {
+                "postion": 4,
+                "img_url": "images/blogs_img/使website能被搜索引擎搜到/3.png"
+            }
+        ]
+    }],
+    "使用Github作为云盘": [{
+        "title": "如何使用Github作为云盘",
+        "text": [
+            "最近发现Github不仅能存储代码,还能存储一些日常文件,所以用Github作为云盘的想法便油然而生。",
+            "首先先看难点:1、正规的仓库只能下载整个仓库的zip,并不能做到单个文件下载;2、如何获取仓库中的文件列表;3、Github的下载在中国极不稳定,并且速度感人。",
+            "OK,理清问题后直接开干",
+            "先是下载单文件的问题,我们可以通过建立一个release来解决。我们先建立一个仓库,将一些文件放进去。随后,点击右边的<a>'Create a new release'</a>,再填写你的云盘的一些信息(记得如图创建版本)。",
+            "随后,上传要可以下载的文件(注意,只能是英文或数字名称),创建版本。",
+            "接着,我们在仓库主页单击release,进入release页面,在要下载的文件上右键,获取下载链接,找到文件路径的规律,例如我的云盘的文件路径为https://github.com/Q3dlaXpoaQ/Cloud/releases/download/Cloud{/文件名}。至此,第一个问题解决。",
+            "第二个问题其实很好解决,只需要用到<a>api.github</a>即可。我们只需要在浏览器地址栏输入<a>'https://api.github.com/repos/{github名称}/{仓库名称}/releases'</a>,就会发现我们要下载文件的地址及名称都出来了。因此接下来,我们需要用老操作读取json,再通过代码对云盘页面进行管理(此处省略贼多代码)(最复杂最核心的代码就在这)。",
+            "第三个问题也很简单,只需要用一些加速网站或在gitee或coding等中国网站镜像部署就可以了(此处也省略一堆过程)。"
+        ],
+        "img": [{
+            "postion": 3,
+            "img_url": "images/blogs_img/使用Github作为云盘/2.png"
+        }, {
+            "postion": 3,
+            "img_url": "images/blogs_img/使用Github作为云盘/1.png"
+        }, {
+            "postion": 4,
+            "img_url": "images/blogs_img/使用Github作为云盘/3.png"
+        }, {
+            "postion": 5,
+            "img_url": "images/blogs_img/使用Github作为云盘/5.png"
+        }, {
+            "postion": 5,
+            "img_url": "images/blogs_img/使用Github作为云盘/4.png"
+        }]
+    }]
+}
