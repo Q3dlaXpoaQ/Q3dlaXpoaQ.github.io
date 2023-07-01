@@ -156,10 +156,14 @@ function recordtime() {
 
 function rendering_forDownload() {
     if (localStorage.getItem('Download_Api') == null) {
-        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/git/trees/cd52ad49bab714106fa18244ee52858a1a4c229d", function (data) {
-            CreateDownload(data);
-            localStorage.setItem('Download_Api', JSON.stringify(data))
-            console.log('use api')
+        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/commits", function (data1) {
+            $.get(data1[0]['commit']['tree']['url'],function (data2){
+                CreateDownload(data2);
+                console.log(data1[0])
+                localStorage.setItem('Download_Api', JSON.stringify(data2))
+                console.log('use api')
+            })
+
         })
     } else {
         CreateDownload(JSON.parse(localStorage.getItem('Download_Api')));
