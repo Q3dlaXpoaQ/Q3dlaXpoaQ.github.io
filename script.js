@@ -1,6 +1,6 @@
 function rendering_forLogs() {
     window.onload = function () {
-        var url = "datas.json"
+        var url = "libraries/datas.json"
         var request = new XMLHttpRequest();
         request.open("get", url);
         request.send(null);
@@ -23,7 +23,7 @@ function rendering_forLogs() {
 
 function rendering_forRecord() {
     window.onload = function () {
-        var url = "datas.json"
+        var url = "libraries/datas.json"
         var request = new XMLHttpRequest();
         request.open("get", url);
         request.send(null);
@@ -74,7 +74,7 @@ function rendering_forRecord_Pages() {
         localStorage.removeItem("record_name");
     };
     window.onload = function () {
-        var url = "records.json";
+        var url = "libraries/records.json";
         var request = new XMLHttpRequest();
         request.open("get", url);
         request.send(null);
@@ -121,7 +121,7 @@ function recordtime() {
     window.onload = function () {
         var json;
         var request = new XMLHttpRequest();
-        request.open("get", "datas.json");
+        request.open("get", "libraries/datas.json");
         request.send(null);
         request.onload = function () {
             json = JSON.parse(request.responseText).update_time[0];
@@ -156,10 +156,14 @@ function recordtime() {
 
 function rendering_forDownload() {
     if (localStorage.getItem('Download_Api') == null) {
-        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/git/trees/cd52ad49bab714106fa18244ee52858a1a4c229d", function (data) {
-            CreateDownload(data);
-            localStorage.setItem('Download_Api', JSON.stringify(data))
-            console.log('use api')
+        $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/commits", function (data1) {
+            $.get(data1[0]['commit']['tree']['url'],function (data2){
+                CreateDownload(data2);
+                console.log(data1[0])
+                localStorage.setItem('Download_Api', JSON.stringify(data2))
+                console.log('use api')
+            })
+
         })
     } else {
         CreateDownload(JSON.parse(localStorage.getItem('Download_Api')));
