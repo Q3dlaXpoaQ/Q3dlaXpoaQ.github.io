@@ -1,3 +1,7 @@
+html{
+    color-scheme:dark;
+}
+
 /*mainSquare*/
 .square {
     background-color: black;
@@ -9,12 +13,13 @@
     box-shadow: 2px 2px 5px rgba(134, 8, 252, 0.815);
     margin-top: 40px;
     margin-bottom: 40px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 17%;
+    margin-right: 23%;
     border: 3px solid rgba(134, 8, 252, 0.815);
     border-radius: 6px;
     border-bottom-right-radius: 20px;
 }
+
 
 
 /*index.html*/
@@ -67,12 +72,10 @@
     height: 60px;
 }
 
-.index_body {
+.index_body {  
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
-    background-color: black;
     margin: 0;
-    color: white;
 }
 
 .index_body article,
@@ -81,22 +84,47 @@
     font-weight: bolder;
     font-size: 33px;
     color: rgb(201, 198, 198);
+    color: transparent;
     margin-top: 100px;
     margin-left: 10%;
     margin-right: 10%;
+    position: relative;
+    background-image: linear-gradient(to right,rgb(201, 198, 198),rgb(201, 198, 198),transparent);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position-x:200% ;
+    animation: 1s h1_fill_background ease-in-out forwards;
 }
 
 .index_body article span,
 .index_body h1 span {
     color: blueviolet;
+    color:  transparent;
+    animation: 1s h1_fill_background ease-in-out forwards;
+    background-image: linear-gradient(to right,blueviolet,blueviolet,transparent);
+    background-position-x: 200%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-size: inherit;
+
 }
 
 .index_body p {
+    position: relative;
     line-height: 125%;
     border-left: 3px solid blueviolet;
     padding-left: 7px;
     font-size: larger;
     color: rgb(201, 198, 198);
+    color:transparent;
+    background-image: linear-gradient(to bottom,rgb(201, 198, 198),rgb(201, 198, 198),transparent);
+    background-position-y:-100% ;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    -webkit-background-clip:text;
+    animation: 1s p_fill_background ease-in-out 1.5s forwards;
+    background-size: 200% 200%;
     margin-bottom: 30px;
     margin-left: 10%;
     margin-right: 10%;
@@ -106,6 +134,13 @@
     font-size: inherit;
     font-family: sans-serif;
     color: blueviolet;
+    color: transparent;
+    background-position-y:200%;
+    background-image: linear-gradient(to bottom,blueviolet,blueviolet,transparent);
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-clip: inherit;
+    animation: 1s p_fill_background ease-in-out 1.5s forwards;
 }
 
 .index_body p span a {
@@ -167,7 +202,6 @@
     margin: initial;
     color: rgba(255, 255, 255, 0.726);
 }
-
 
 /*gamesController.html*/
 #gamescontrol article div {
@@ -301,3 +335,60 @@
 ::selection {
     background: rgba(112, 0, 218, 0.712);
 }
+
+@keyframes p_fill_background{
+    from{
+        background-position-y: 200%;
+    }
+    to{
+        background-position-y: 0%;
+    }
+}
+@keyframes h1_fill_background{
+    from{
+        background-position-x: 200%;
+    }
+    to{
+        background-position-x:0% ;
+    }
+}
+@keyframes record_rendering_hover{
+    from{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    to{
+        margin-left: 17%;
+        margin-right: 23%;
+    }
+}
+@keyframes record_rendering_null{
+    from{
+        margin-left: 17%;
+        margin-right: 23%;
+    }
+    to{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+@keyframes square_start{
+    from{
+        margin-left: 17%;
+        margin-right: 23%;
+    }
+    to{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+.record_rendering_hover{
+    animation: 0.5s record_rendering_hover ease-in-out forwards;
+}
+.record_rendering_null{
+    animation: 0.5s record_rendering_null ease-in-out forwards;
+}
+
+
+
+

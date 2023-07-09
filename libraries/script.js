@@ -6,6 +6,7 @@ function rendering_forLogs() {
         request.send(null);
         request.onload = function () {
             var json = JSON.parse(request.responseText).logs;
+            var delay=0;
             for (var listnumber in json) {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
@@ -15,6 +16,8 @@ function rendering_forLogs() {
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
                 article.insertAdjacentElement("beforeend", div);
+                article.style.animation='0.5s square_start ease-in-out '+delay.toString()+'s forwards';
+                delay+=0.1;
             };
 
         }
@@ -29,6 +32,7 @@ function rendering_forRecord() {
         request.send(null);
         request.onload = function () {
             var json = JSON.parse(request.responseText).record;
+            var delay=0;
             for (var listnumber in json) {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
@@ -38,7 +42,7 @@ function rendering_forRecord() {
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
                 article.insertAdjacentElement("afterbegin", div);
-                console.log(listnumber)
+                article.style.animation='0.5s square_start ease-in-out '+delay.toString()+'s forwards'
                 if (json[listnumber]["see_more"] != null) {
                     let now_number = listnumber;
                     let link_div = document.createElement("div");
@@ -46,11 +50,14 @@ function rendering_forRecord() {
                     article.title = "查看详情";
                     article.onmousemove = function () {
                         document.body.style.cursor = "pointer";
-                        article.style = "margin-left: 19.2%;margin-right: 20.8%;"
+                        article.classList.add('record_rendering_hover')
+                        article.style=''
+                        article.classList.remove('record_rendering_null');
                     };
                     article.onmouseout = function () {
                         document.body.style.cursor = "auto";
-                        article.style = "margin-left: 20%;margin-right: 20%;"
+                        article.classList.remove('record_rendering_hover');
+                        article.classList.add('record_rendering_null')
                     };
                     article.insertAdjacentElement("beforeend", link_div);
                     article.onclick = function () {
@@ -58,6 +65,8 @@ function rendering_forRecord() {
                         localStorage.setItem("record_name", json[now_number]["see_more"]);
                     };
                 };
+                delay+=0.1;
+
             };
         }
     }
@@ -159,7 +168,6 @@ function rendering_forDownload() {
         $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/commits", function (data1) {
             $.get(data1[0]['commit']['tree']['url'],function (data2){
                 CreateDownload(data2);
-                console.log(data1[0])
                 localStorage.setItem('Download_Api', JSON.stringify(data2))
                 console.log('use api')
             })
@@ -171,6 +179,8 @@ function rendering_forDownload() {
     }
 
 }
+
+
 async function LoginCloud() {
     window.onload = async function () {
         if (localStorage.getItem('Is_Login') != 'true') {
