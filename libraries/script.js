@@ -17,7 +17,7 @@ function rendering_forLogs() {
                 article.insertAdjacentElement("afterbegin", p);
                 article.style.animationDelay=delay.toString()+'s'
                 article.insertAdjacentElement("beforeend", div);
-                delay+=0.06+''
+                delay+=0.06
             };
 
         }
