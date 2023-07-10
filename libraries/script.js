@@ -37,6 +37,7 @@ function rendering_forRecord() {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
                 let div = document.createElement("div");
+                p.innerHTML = json[listnumber]["thing"];
                 div.innerHTML = json[listnumber]["time"];
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
