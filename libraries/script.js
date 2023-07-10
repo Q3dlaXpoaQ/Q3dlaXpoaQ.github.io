@@ -5,8 +5,8 @@ function rendering_forLogs() {
         request.open("get", url);
         request.send(null);
         request.onload = function () {
+            var delay=0
             var json = JSON.parse(request.responseText).logs;
-            var delay=0;
             for (var listnumber in json) {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
@@ -15,9 +15,9 @@ function rendering_forLogs() {
                 div.innerHTML = "--" + json[listnumber]["time"];
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
+                article.style.animationDelay=delay.toString()+'s'
                 article.insertAdjacentElement("beforeend", div);
-                article.style.animation='0.5s square_start ease-in-out '+delay.toString()+'s forwards';
-                delay+=0.1;
+                delay+=0.06+''
             };
 
         }
@@ -37,27 +37,22 @@ function rendering_forRecord() {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
                 let div = document.createElement("div");
-                p.innerHTML = json[listnumber]["thing"];
                 div.innerHTML = json[listnumber]["time"];
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
                 article.insertAdjacentElement("afterbegin", div);
-                article.style.animation='0.5s square_start ease-in-out '+delay.toString()+'s forwards'
+                article.style.animationDelay=delay.toString()+'s'
                 if (json[listnumber]["see_more"] != null) {
                     let now_number = listnumber;
                     let link_div = document.createElement("div");
                     link_div.innerHTML = "----→";
                     article.title = "查看详情";
+                    article.classList.add('square_sliding')
                     article.onmousemove = function () {
-                        document.body.style.cursor = "pointer";
-                        article.classList.add('record_rendering_hover')
-                        article.style=''
-                        article.classList.remove('record_rendering_null');
+                        document.body.style.cursor = "pointer"
                     };
                     article.onmouseout = function () {
                         document.body.style.cursor = "auto";
-                        article.classList.remove('record_rendering_hover');
-                        article.classList.add('record_rendering_null')
                     };
                     article.insertAdjacentElement("beforeend", link_div);
                     article.onclick = function () {
@@ -65,13 +60,12 @@ function rendering_forRecord() {
                         localStorage.setItem("record_name", json[now_number]["see_more"]);
                     };
                 };
-                delay+=0.1;
-
+                delay+=0.06;
             };
         }
     }
-}
 
+}
 
 function rendering_forRecord_Pages() {
     var record_name = null;
