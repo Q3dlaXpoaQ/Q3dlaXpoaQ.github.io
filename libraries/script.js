@@ -5,7 +5,7 @@ function rendering_forLogs() {
         request.open("get", url);
         request.send(null);
         request.onload = function () {
-            var delay=0
+            var delay = 0
             var json = JSON.parse(request.responseText).logs;
             for (var listnumber in json) {
                 let article = document.createElement("article");
@@ -15,9 +15,9 @@ function rendering_forLogs() {
                 div.innerHTML = "--" + json[listnumber]["time"];
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
-                article.style.animationDelay=delay.toString()+'s'
+                article.style.animationDelay = delay.toString() + 's'
                 article.insertAdjacentElement("beforeend", div);
-                delay+=0.06
+                delay += 0.06
             };
 
         }
@@ -32,7 +32,7 @@ function rendering_forRecord() {
         request.send(null);
         request.onload = function () {
             var json = JSON.parse(request.responseText).record;
-            var delay=0;
+            var delay = 0;
             for (var listnumber in json) {
                 let article = document.createElement("article");
                 let p = document.createElement("p");
@@ -42,7 +42,7 @@ function rendering_forRecord() {
                 document.body.append(article);
                 article.insertAdjacentElement("afterbegin", p);
                 article.insertAdjacentElement("afterbegin", div);
-                article.style.animationDelay=delay.toString()+'s'
+                article.style.animationDelay = delay.toString() + 's'
                 if (json[listnumber]["see_more"] != null) {
                     let now_number = listnumber;
                     let link_div = document.createElement("div");
@@ -61,7 +61,7 @@ function rendering_forRecord() {
                         localStorage.setItem("record_name", json[now_number]["see_more"]);
                     };
                 };
-                delay+=0.06;
+                delay += 0.06;
             };
         }
     }
@@ -97,7 +97,7 @@ function rendering_forRecord_Pages() {
             for (var img_number in json["img"]) {
                 let img = document.createElement("img");
                 img.src = json["img"][img_number]["img_url"];
-                let br=document.createElement('br')
+                let br = document.createElement('br')
                 img.onclick = function () {
                     window.open(json["img"][img_number]["img_url"]);
                 };
@@ -116,12 +116,13 @@ function rendering_forRecord_Pages() {
 }
 
 function recordtime() {
-    const Toast = Swal.mixin({
-        width: 470,
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-    })
+    function newalert(text) {
+        const Toast = Swal.fire({
+            title: text,
+            icon: "info",
+            position:'center',
+        })
+    }
     window.onload = function () {
         var json;
         var request = new XMLHttpRequest();
@@ -138,19 +139,13 @@ function recordtime() {
             console.log(last_time);
             if (localStorage.getItem('last_time') != null) {
                 if (last_update_date > last_time) {
-                    Toast.fire({
-                        title: 'Welcome baak,this website has been updated'
-                    })
+                    newalert('Welcome, this site has been updated')
                 } else {
-                    Toast.fire({
-                        title: 'Welcome back'
-                    })
+                    newalert('Welcome back')
                 }
                 localStorage.setItem("last_time", now_time);
             } else {
-                Toast.fire({
-                    title: 'Welcome to my website'
-                })
+                newalert('Welcome to my website')
                 localStorage.setItem("last_time", now_time);
             }
         };
@@ -161,7 +156,7 @@ function recordtime() {
 function rendering_forDownload() {
     if (localStorage.getItem('Download_Api') == null) {
         $.get("https://api.github.com/repos/Q3dlaXpoaQ/Cloud/commits", function (data1) {
-            $.get(data1[0]['commit']['tree']['url'],function (data2){
+            $.get(data1[0]['commit']['tree']['url'], function (data2) {
                 CreateDownload(data2);
                 localStorage.setItem('Download_Api', JSON.stringify(data2))
                 console.log('use api')
@@ -247,12 +242,12 @@ function CreateDownload(data) {
         div.insertAdjacentElement("beforeend", br)
     }
     let div = document.createElement('div')
-    div.id='RefreshDiv'
+    div.id = 'RefreshDiv'
     let img = document.createElement('img')
     img.src = 'images/refresh.png'
     img.style.width = '100%';
     img.style.height = '90%';
-    div.title='刷新';
+    div.title = '刷新';
     div.onclick = function () {
         Update_Cloud();
     }
