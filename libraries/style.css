@@ -43,7 +43,7 @@
     border-radius: 10px;
     line-height: 50px;
     transition-property: all;
-    transition-duration: 0.33s;
+    transition-duration: 0.4s;
 }
 
 .index_menu th a div:hover {
@@ -79,19 +79,8 @@
     height: 100%;
     margin: 0;
     background-color: black;
+    animation: 1s index_body_filter ease-in-out forwards;
     }
-
-.index_body::after{
-    content: '';
-    width: 100%;
-    background-image: conic-gradient(from 150deg at 50% 50%,#12001b -97.5deg,
-    #000000 14.05deg,#404eff 54.01deg,#8000ff,#00b6b6 185.62deg,
-    #12001b 265.5deg,#000000 375.05deg );
-    filter: blur(60px);
-    background-clip: text;
-    z-index:2;
-}
-
 .index_body article,
 .index_body h1 {
     margin-bottom: 20px;
@@ -321,6 +310,27 @@
 }
 
 
+.go_home_button {
+    top:2%;
+    left: 2%;
+    width: 5%;
+    position: fixed;
+    background-color: black;
+    transition-property: all;
+    transition-duration: 0.3s;
+    border-radius: 10px;
+}
+.go_home_button img{
+    width: 100%;
+    height: 100%;
+}
+.go_home_button:hover{
+    top: 0.5%;
+    background-color:rgba(255, 254, 254,0.9);
+}
+
+
+
 /*scrollbar*/
 ::-webkit-scrollbar {
     width: 6px;
@@ -376,3 +386,12 @@
         margin-right: 20%;
     }
 }
+@keyframes index_body_filter{
+    from {
+        filter: blur(60px);
+    }
+    to{
+        filter: blur(0px);
+    }
+}
+
