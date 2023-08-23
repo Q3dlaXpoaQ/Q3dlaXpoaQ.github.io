@@ -79,8 +79,7 @@
     height: 100%;
     margin: 0;
     background-color: black;
-    animation: 1s index_body_filter ease-in-out forwards;
-    }
+}
 .index_body article,
 .index_body h1 {
     margin-bottom: 20px;
@@ -394,4 +393,6 @@
         filter: blur(0px);
     }
 }
+
+
 
