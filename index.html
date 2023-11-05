@@ -21,19 +21,25 @@
 <body class="index_body">
     <div id="start_filter"></div>
     <header id="index_header">
-        <table style="float: right" class="index_menu">
-            <th> <a href="RecordController.html">
-                    <div>日常记录</div>
-                </a></th>
-            <th> <a href="logs.html">
-                    <div>日志</div>
-                </a></th>
-            <th>
-                <a href="Download.html" target="_blank">
-                    <div>云盘</div>
-                </a></th>
-            </th>
-        </table>
+
+        <div style="float: right" id="index_menu">
+            <ul>
+                <li><a href="RecordController.html">
+                        <div>日常记录</div>
+                    </a>
+                </li>
+                <li><a href="logs.html">
+                        <div>日志</div>
+                    </a></li>
+                <li><a href="Download.html" target="_blank">
+                        <div>云盘</div>
+                    </a></li>
+                <li><a href="ChatGPT/index.html" target="_blank">
+                        <div>GPT</div>
+                    </a></li>
+            </ul>
+        </div>
+        <div id="menu_media"><img src="images/menu.png" id="menu_img"></div>
         <div
             style="height:100%;font-size:37px;color: white;width: 240px;text-align: center;padding-left: 15px;font-family:Arial, Helvetica, sans-serif;line-height: 150%;font-style: italic;">
             Q3dlaXpoaQ</div>
@@ -41,6 +47,7 @@
     <script src="libraries/script.js" charset="utf-8"></script>
     <script>
         recordtime();
+        MenuController();
     </script>
     <h1><span>Welcome</span> to my website.</h1>
     <p style="animation-delay: 1s;">

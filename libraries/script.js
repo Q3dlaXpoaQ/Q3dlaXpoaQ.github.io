@@ -260,3 +260,18 @@ function CreateDownload(data) {
     document.body.append(div)
     div.appendChild(img);
 }
+
+function MenuController(){
+    var btn=document.getElementById("menu_media");
+    var menu=document.getElementById("index_menu");
+    var menu_img=document.getElementById("menu_img")
+    btn.onclick=function(){
+            menu.classList.toggle("visible");
+    }
+    document.addEventListener("click", function(event) {
+        var targetElement = event.target;
+        if (targetElement !== btn && targetElement !== menu && !menu.contains(targetElement) && targetElement!==menu_img) {
+            menu.classList.remove("visible")
+        }
+    });
+}

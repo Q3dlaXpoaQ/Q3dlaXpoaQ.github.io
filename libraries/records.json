@@ -89,5 +89,21 @@
             "postion": 5,
             "img_url": "images/blogs_img/使用Github作为云盘/4.png"
         }]
+    }],
+    "国内使用GPT":[{
+        "title":"国内如何免费使用ChatGPT3.5",
+        "text":[
+            "在国外,GPT3.5模型是免费的,因此我想再国内无需翻墙就使用免费稳定的GPT",
+            "首先我们要感谢这位大佬的免费秘钥申请<a>https://github.com/chatanywhere/GPT_API_free</a>",
+            "然后本应该去openAI官网使用的,但这里我们选择用chatanywhere的API接口。随后，输入你的APIKey就可以了。"
+        ],
+        "img":[{
+            "postion":1,
+            "img_url":"images/blogs_img/国内使用GPT/1.png"
+        },{
+            "postion":2,
+            "img_url":"images/blogs_img/国内使用GPT/2.png"
+        }]
+
     }]
 }
