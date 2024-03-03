@@ -22,7 +22,7 @@ jobs:
       run: pip install requests
 
     - name: Run Python script
-      run: python /APIs/get.py
+      run: python APIs/get.py
 
     - name: Check for changes
       run: |
