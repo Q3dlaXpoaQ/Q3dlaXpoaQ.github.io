@@ -22,15 +22,16 @@ jobs:
       run: pip install requests
 
     - name: Run Python script
-      run: python APIs/get.py
+      run: |
+        cd APIs/
+        python /get.py
 
     - name: Check for changes
       run: |
         git status
         if [[ $(git status --porcelain) ]]; then
-          cd APIs/
-          git add nodefree.txt
-          git add openrunner.txt
+          git add APIs/nodefree.txt
+          git add APIs/openrunner.txt
           git status
           git commit -m "Update files"
           git push https://github.com/${{ github.repository }} HEAD:main
