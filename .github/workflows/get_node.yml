@@ -28,7 +28,7 @@ jobs:
       run: |
         git status
         if [[ $(git status --porcelain) ]]; then
-          cd /APIs
+          cd APIs/
           git add nodefree.txt
           git add openrunner.txt
           git status
