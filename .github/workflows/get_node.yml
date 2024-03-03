@@ -29,7 +29,7 @@ jobs:
     - name: Check for changes
       run: |
         git status
-        if [[ $(git status --porcelain) ]]; then
+        if [[ $(git status --porcelain APIs/nodefree.txt APIs/openrunner.txt) ]]; then
           git add APIs/nodefree.txt
           git add APIs/openrunner.txt
           git status
@@ -40,4 +40,5 @@ jobs:
         fi
       env:
         PAT: ${{ secrets.PAT }}
-
+    
+    
