@@ -1,0 +1,58 @@
+name: Update Files and Create Release
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run Python script
+      run: python get.py
+
+    - name: Check for changes
+      run: |
+        git status
+        if [[ $(git status --porcelain) ]]; then
+          git add .
+          git commit -m "Update files"
+          git push https://github.com/${{ github.repository }} HEAD:main
+        else
+          echo "No changes to commit"
+        fi
+      env:
+        PAT: ${{ secrets.PAT }}
+
+    - name: Upload nodefree
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: "Nodes"
+        file: "nodefree.txt"
+        overwrite: true
+        draft: false
+        prerelease: false
+
+    - name: Upload openrunner
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: "Nodes"
+        file: "openrunner.txt"
+        overwrite: true
+        draft: false
+        prerelease: false
