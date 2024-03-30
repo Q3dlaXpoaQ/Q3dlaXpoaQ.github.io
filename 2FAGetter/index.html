@@ -2,118 +2,196 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>web-based two factor authentication generator</title>
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+  <meta charset="utf-8">
+  <title>二维码解析及2FA秘钥提取</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
 
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
+    .container {
+      margin-top: 50px;
+    }
 
-        input[type="text"] {
-            margin: 0 auto;
-            border: solid 1px #ccc;
-            width: 360px;
-            outline: none;
-            color: #333;
-            padding: 8px;
-        }
+    input[type="text"] {
+      border: solid 1px #ccc;
+      width: 360px;
+      outline: none;
+      color: #333;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
 
-        #webCode {
-            font-size: 60px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+    #webCode {
+      font-size: 60px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-        #webRefresh {
-            color: red;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-    </style>
+    #webRefresh {
+      color: red;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    #uploadInput {
+      display: none;
+    }
+
+    #uploadButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    #extractButton {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #url {
+      color: #666;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <p style="color: #666;">Secret</p>
-        <input type="text" id="webSec">
-        <p style="color: #666;">Code</p>
-        <div id="webCode"></div>
-        <p style="color: #666;">Expire</p>
-        <div id="webRefresh">2</div>
-    </div>
-    <script>
-        let t = null;
-        let k = '';
-        let lastCode = '';
-        let isprivate = false;
-        function key2code(K, t) {
-            function sha1(C) {
-                function L(x, b) { return x << b | x >>> 32 - b; }
-                var l = C.length, D = C.concat([1 << 31]), V = 0x67452301, W = 0x88888888,
-                    Y = 271733878, X = Y ^ W, Z = 0xC3D2E1F0; W ^= V;
-                do D.push(0); while (D.length + 1 & 15); D.push(32 * l);
-                while (D.length) {
-                    var E = D.splice(0, 16), a = V, b = W, c = X, d = Y, e = Z, f, k, i = 12;
-                    function I(x) { var t = L(a, 5) + f + e + k + E[x]; e = d; d = c; c = L(b, 30); b = a; a = t; }
-                    for (; ++i < 77;)E.push(L(E[i] ^ E[i - 5] ^ E[i - 11] ^ E[i - 13], 1));
-                    k = 0x5A827999; for (i = 0; i < 20; I(i++))f = b & c | ~b & d;
-                    k = 0x6ED9EBA1; for (; i < 40; I(i++))f = b ^ c ^ d;
-                    k = 0x8F1BBCDC; for (; i < 60; I(i++))f = b & c | b & d | c & d;
-                    k = 0xCA62C1D6; for (; i < 80; I(i++))f = b ^ c ^ d;
-                    V += a; W += b; X += c; Y += d; Z += e;
-                }
-                return [V, W, X, Y, Z];
-            }
-            var k = [], l = [], i = 0, j = 0, c = 0;
-            for (; i < K.length;) {
-                c = c * 32 + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'.
-                    indexOf(K.charAt(i++).toUpperCase());
-                if ((j += 5) > 31) k.push(Math.floor(c / (1 << (j -= 32))))
-                    , c &= 31;
-            }
-            j && k.push(c << (32 - j));
-            for (i = 0; i < 16; ++i)l.push(0x6A6A6A6A ^ (k[i] = k[i] ^ 0x5C5C5C5C));
-            var s = sha1(k.concat(sha1(l.concat([0, t])))), o = s[4] & 0xF;
-            return (((s[o >> 2] << 8 * (o & 3) | (o & 3 ? s[(o >> 2) + 1] >>> 8 * (4 - o & 3) : 0)) & -1 >>> 1) % 1000000).toString().padStart(6, "0");
+  <div class="container">
+    <h1>二维码解析、2FA秘钥提取</h1>
+    <p>上传二维码图片,自动解析并提取2FA秘钥</p>
+    <input type="text" id="webSec" placeholder="2FA秘钥">
+    <br>
+    <div id="webCode"></div>
+    <div id="webRefresh">2</div>
+    <br>
+    <label for="uploadInput" id="uploadButton">选择文件</label>
+    <input type="file" accept="image/*" id="uploadInput">
+    <button id="extractButton">解析秘钥</button>
+    <p id="url"></p>
+  </div>
+
+  <script>
+    let t = null;
+    let k = '';
+    let lastCode = '';
+    let isprivate = false;
+
+    function key2code(K, t) {
+      function sha1(C) {
+        function L(x, b) { return x << b | x >>> 32 - b; }
+        var l = C.length, D = C.concat([1 << 31]), V = 0x67452301, W = 0x88888888,
+          Y = 271733878, X = Y ^ W, Z = 0xC3D2E1F0; W ^= V;
+        do D.push(0); while (D.length + 1 & 15); D.push(32 * l);
+        while (D.length) {
+          var E = D.splice(0, 16), a = V, b = W, c = X, d = Y, e = Z, f, k, i = 12;
+          function I(x) { var t = L(a, 5) + f + e + k + E[x]; e = d; d = c; c = L(b, 30); b = a; a = t; }
+          for (; ++i < 77;)E.push(L(E[i] ^ E[i - 5] ^ E[i - 11] ^ E[i - 13], 1));
+          k = 0x5A827999; for (i = 0; i < 20; I(i++))f = b & c | ~b & d;
+          k = 0x6ED9EBA1; for (; i < 40; I(i++))f = b ^ c ^ d;
+          k = 0x8F1BBCDC; for (; i < 60; I(i++))f = b & c | b & d | c & d;
+          k = 0xCA62C1D6; for (; i < 80; I(i++))f = b ^ c ^ d;
+          V += a; W += b; X += c; Y += d; Z += e;
         }
+        return [V, W, X, Y, Z];
+      }
+      var k = [], l = [], i = 0, j = 0, c = 0;
+      for (; i < K.length;) {
+        c = c * 32 + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'.
+          indexOf(K.charAt(i++).toUpperCase());
+        if ((j += 5) > 31) k.push(Math.floor(c / (1 << (j -= 32))))
+          , c &= 31;
+      }
+      j && k.push(c << (32 - j));
+      for (i = 0; i < 16; ++i)l.push(0x6A6A6A6A ^ (k[i] = k[i] ^ 0x5C5C5C5C));
+      var s = sha1(k.concat(sha1(l.concat([0, t])))), o = s[4] & 0xF;
+      return (((s[o >> 2] << 8 * (o & 3) | (o & 3 ? s[(o >> 2) + 1] >>> 8 * (4 - o & 3) : 0)) & -1 >>> 1) % 1000000).toString().padStart(6, "0");
+    }
 
-        function update() {
-            var e = Math.floor(new Date().getTime() / 1000);
-            var t = Math.floor(e / 30);
-            let left = 30 - (e - (t * 30));
-            let c = key2code(k, t);
-            if (lastCode != c) document.querySelector('#webCode').innerHTML = c;
-            lastCode = c;
-            document.querySelector('#webRefresh').innerHTML = left;
-        }
+    function update() {
+      var e = Math.floor(new Date().getTime() / 1000);
+      var t = Math.floor(e / 30);
+      let left = 30 - (e - (t * 30));
+      let c = key2code(k, t);
+      if (lastCode != c) document.querySelector('#webCode').innerHTML = c;
+      lastCode = c;
+      document.querySelector('#webRefresh').innerHTML = left;
+    }
 
-        // parse url param
-        const p = window.location.href.split('?code=');
-        k = p.length > 1 ? p[1] : '';
-        document.querySelector('#webSec').value = k;
-        isprivate = window.location.href.indexOf('?private=1') !== -1;
+    // parse url param
+    const p = window.location.href.split('?code=');
+    k = p.length > 1 ? p[1] : '';
+    document.querySelector('#webSec').value = k;
+    isprivate = window.location.href.indexOf('?private=1') !== -1;
 
-        setInterval(update, 1000);
-        update();
+    setInterval(update, 1000);
+    update();
 
-        const onSecretUpdate = (e) => {
-            k = e.target.value;
-            if (!isprivate) window.history.pushState({ state: 1 }, document.title, '?code=' + k);
+    const onSecretUpdate = (e) => {
+      k = e.target.value;
+      if (!isprivate) window.history.pushState({ state: 1 }, document.title, '?code=' + k);
+      update();
+    };
+
+    document.querySelector('#webSec').addEventListener('keyup', onSecretUpdate);
+    document.querySelector('#webSec').addEventListener('input', onSecretUpdate);
+    document.querySelector('#webSec').addEventListener('focus', e => e.target.setSelectionRange(0, e.target.value.length));
+
+    document.getElementById("uploadInput").addEventListener("change", function (event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        var image = new Image();
+        image.src = e.target.result;
+
+        image.onload = function () {
+          var canvas = document.createElement("canvas");
+          var context = canvas.getContext("2d");
+
+          canvas.width = image.width;
+          canvas.height = image.height;
+          context.drawImage(image, 0, 0, image.width, image.height);
+
+          var imageData = context.getImageData(0, 0, image.width, image.height);
+          var qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (qrCode) {
+            document.getElementById("url").innerText = "二维码数据: "+qrCode.data;
+            k = qrCode.data.match(/secret=([^&]+)/)[1];
+
+            document.querySelector('#webSec').value = k;
             update();
-        };
 
-        document.querySelector('#webSec').addEventListener('keyup', onSecretUpdate);
-        document.querySelector('#webSec').addEventListener('input', onSecretUpdate);
-        document.querySelector('#webSec').addEventListener('focus', e => e.target.setSelectionRange(0, e.target.value.length));
-    </script>
+
+          } else {
+            document.getElementById("url").innerText = "无法识别二维码";
+          }
+        };
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.0.0/dist/jsQR.js"></script>
 </body>
 
 </html>
