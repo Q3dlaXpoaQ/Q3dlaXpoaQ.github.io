@@ -37,7 +37,7 @@
     color: #fff;
     border-radius: 10px;
     transition: right 0.3s ease-in-out;
-    overflow: hidden;
+    overflow-y: auto;
     font-size: xx-large;
 }
 #index_menu.visible{
