@@ -69,6 +69,38 @@
     #url {
       color: #666;
       margin-top: 20px;
+      /* 禁止用户选中文本 */
+    }
+
+
+    button {
+      background-color: #008CBA;
+      color: white;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 10px;
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: #005f7f;
+    }
+
+    #copyButton {
+      background-color: #f44336;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #copyButton:hover {
+      background-color: #d32f2f;
     }
   </style>
 </head>
@@ -86,13 +118,14 @@
     <input type="file" accept="image/*" id="uploadInput">
     <button id="extractButton">解析秘钥</button>
     <p id="url"></p>
+    <button id="copyButton">复制2FA密码</button>
+
   </div>
 
   <script>
     let t = null;
     let k = '';
     let lastCode = '';
-    let isprivate = false;
 
     function key2code(K, t) {
       function sha1(C) {
@@ -135,24 +168,21 @@
       document.querySelector('#webRefresh').innerHTML = left;
     }
 
-    // parse url param
-    const p = window.location.href.split('?code=');
-    k = p.length > 1 ? p[1] : '';
-    document.querySelector('#webSec').value = k;
-    isprivate = window.location.href.indexOf('?private=1') !== -1;
 
     setInterval(update, 1000);
     update();
 
     const onSecretUpdate = (e) => {
       k = e.target.value;
-      if (!isprivate) window.history.pushState({ state: 1 }, document.title, '?code=' + k);
       update();
     };
 
     document.querySelector('#webSec').addEventListener('keyup', onSecretUpdate);
     document.querySelector('#webSec').addEventListener('input', onSecretUpdate);
     document.querySelector('#webSec').addEventListener('focus', e => e.target.setSelectionRange(0, e.target.value.length));
+    document.getElementById("uploadInput").addEventListener("click", function () {
+      this.value = null; // 清除文件输入框的值
+    });
 
     document.getElementById("uploadInput").addEventListener("change", function (event) {
       var file = event.target.files[0];
@@ -174,14 +204,29 @@
           var qrCode = jsQR(imageData.data, imageData.width, imageData.height);
 
           if (qrCode) {
-            document.getElementById("url").innerText = "二维码数据: "+qrCode.data;
+            document.getElementById("url").innerHTML = qrCode.data;
             k = qrCode.data.match(/secret=([^&]+)/)[1];
 
             document.querySelector('#webSec').value = k;
             update();
 
+            // 添加复制按钮
+            var copyButton = document.createElement("button");
+            copyButton.textContent = "复制二维码URL";
+            copyButton.addEventListener("click", function () {
+              var urlText = document.getElementById("url");
+              var range = document.createRange();
+              range.selectNode(urlText);
+              window.getSelection().removeAllRanges();
+              window.getSelection().addRange(range);
+              document.execCommand("copy");
+              window.getSelection().removeAllRanges();
+              alert("已复制二维码URL到剪贴板");
+            });
+            document.getElementById("url").appendChild(copyButton);
+          }
 
-          } else {
+          else {
             document.getElementById("url").innerText = "无法识别二维码";
           }
         };
@@ -189,6 +234,13 @@
 
       reader.readAsDataURL(file);
       update();
+    });
+
+    document.getElementById("copyButton").addEventListener("click", function () {
+      var secretInput = document.getElementById("webSec");
+      secretInput.select();
+      document.execCommand("copy");
+      alert("已复制2FA密码到剪贴板");
     });
   </script>
 
