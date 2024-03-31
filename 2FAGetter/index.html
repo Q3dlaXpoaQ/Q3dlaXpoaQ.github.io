@@ -102,6 +102,57 @@
     #copyButton:hover {
       background-color: #d32f2f;
     }
+
+    #storeButton {
+      background-color: #ff9800;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #keyList {
+      margin-top: 20px;
+    }
+
+    #keyList table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #keyList th,
+    #keyList td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+
+    }
+
+    #keyList th {
+      background-color: #f2f2f2;
+    }
+
+    #keyList tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #keyList tr:hover {
+      background-color: #e9e9e9;
+    }
+
+    #list_table {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      background-color: #9f2ec8;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 
@@ -119,6 +170,9 @@
     <button id="extractButton">解析秘钥</button>
     <p id="url"></p>
     <button id="copyButton">复制2FA密码</button>
+    <button id="storeButton">存储秘钥</button>
+    <div id="keyList"></div>
+
 
   </div>
 
@@ -242,6 +296,67 @@
       document.execCommand("copy");
       alert("已复制2FA密码到剪贴板");
     });
+    window.onload = function () {
+      refreshKeyList()
+    };
+
+
+
+    function refreshKeyList() {
+      var storedKeys = JSON.parse(sessionStorage.getItem("2faKeys"));
+      var keyList = document.getElementById("keyList");
+      keyList.innerHTML = ''; // 清空列表
+
+      var table = document.createElement("table");
+      var headerRow = table.insertRow();
+      var headerCell = headerRow.insertCell();
+      headerCell.textContent = "2FA密钥";
+      headerCell.id = "list_table"
+
+      if (storedKeys) {
+        storedKeys.forEach(function (key) {
+          var row = table.insertRow();
+          var cell = row.insertCell();
+          cell.textContent = key;
+          cell.addEventListener("click", function () {
+            document.querySelector('#webSec').value = key;
+            k=key
+            update();
+          })
+
+          var deleteButton = document.createElement("button");
+          deleteButton.textContent = "删除";
+          deleteButton.addEventListener("click", function () {
+            var index = storedKeys.indexOf(key);
+            storedKeys.splice(index, 1);
+            sessionStorage.setItem("2faKeys", JSON.stringify(storedKeys));
+            refreshKeyList();
+          });
+          cell.appendChild(deleteButton);
+        });
+      }
+
+      keyList.appendChild(table);
+    }
+
+    document.getElementById("storeButton").addEventListener("click", function () {
+      var key = k;
+      var storedKeys = sessionStorage.getItem("2faKeys") ? JSON.parse(sessionStorage.getItem("2faKeys")) : [];
+
+      if (storedKeys.includes(key) || key == "") {
+        alert("该2FA密钥已存在，请勿重复存储");
+        return;
+      }
+
+      storedKeys.push(key);
+      sessionStorage.setItem("2faKeys", JSON.stringify(storedKeys));
+      refreshKeyList();
+      alert("已成功存储2FA密钥到session中");
+    });
+
+
+
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.0.0/dist/jsQR.js"></script>
