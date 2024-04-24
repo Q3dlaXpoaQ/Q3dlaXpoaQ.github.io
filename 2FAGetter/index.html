@@ -303,7 +303,7 @@
 
 
     function refreshKeyList() {
-      var storedKeys = JSON.parse(sessionStorage.getItem("2faKeys"));
+      var storedKeys = JSON.parse(localStorage.getItem("2faKeys"));
       var keyList = document.getElementById("keyList");
       keyList.innerHTML = ''; // 清空列表
 
@@ -329,7 +329,7 @@
           deleteButton.addEventListener("click", function () {
             var index = storedKeys.indexOf(key);
             storedKeys.splice(index, 1);
-            sessionStorage.setItem("2faKeys", JSON.stringify(storedKeys));
+            localStorage.setItem("2faKeys", JSON.stringify(storedKeys));
             refreshKeyList();
           });
           cell.appendChild(deleteButton);
@@ -341,7 +341,7 @@
 
     document.getElementById("storeButton").addEventListener("click", function () {
       var key = k;
-      var storedKeys = sessionStorage.getItem("2faKeys") ? JSON.parse(sessionStorage.getItem("2faKeys")) : [];
+      var storedKeys = localStorage.getItem("2faKeys") ? JSON.parse(localStorage.getItem("2faKeys")) : [];
 
       if (storedKeys.includes(key) || key == "") {
         alert("该2FA密钥已存在，请勿重复存储");
@@ -349,7 +349,7 @@
       }
 
       storedKeys.push(key);
-      sessionStorage.setItem("2faKeys", JSON.stringify(storedKeys));
+      localStorage.setItem("2faKeys", JSON.stringify(storedKeys));
       refreshKeyList();
       alert("已成功存储2FA密钥到session中");
     });
