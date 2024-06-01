@@ -29,10 +29,14 @@ jobs:
     - name: Check for changes
       run: |
         git status
-        if [[ $(git status --porcelain APIs/nodefree.txt APIs/nodeshare.txt APIs/clashgithub.txt) ]]; then
+        if [[ $(git status --porcelain APIs/nodefree.txt APIs/nodeshare.txt APIs/clashgithub0.txt APIs/clashgithub1.txt APIs/clashgithub2.txt APIs/clashgithub3.txt APIs/clashgithub4.txt ) ]]; then
           git add APIs/nodefree.txt
           git add APIs/nodeshare.txt
-          git add APIs/clashgithub.txt
+          git add APIs/clashgithub0.txt
+          git add APIs/clashgithub1.txt
+          git add APIs/clashgithub2.txt
+          git add APIs/clashgithub3.txt
+          git add APIs/clashgithub4.txt
           git status
           git commit -m "Update files"
           git push https://github.com/${{ github.repository }} HEAD:main
