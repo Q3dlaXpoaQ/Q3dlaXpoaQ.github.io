@@ -1,39 +1,35 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Gyroscope Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>h5陀螺仪原理</title>
 </head>
 <body>
-  <h1>Gyroscope Example</h1>
-  <p>Move your device to see the gyroscope data.</p>
-  <p>Alpha: <span id="alpha">0</span></p>
-  <p>Beta: <span id="beta">0</span></p>
-  <p>Gamma: <span id="gamma">0</span></p>
-
-  <script>
-    // 检查浏览器是否支持 Gyroscope API
-    if (typeof window.DeviceOrientationEvent !== 'undefined' && typeof window.DeviceOrientationEvent.requestPermission === 'function') {
-      // 请求访问陀螺仪权限
-      window.DeviceOrientationEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-            // 添加事件监听器
-            window.addEventListener('deviceorientation', handleOrientation);
-          } else {
-            console.log('Permission to access the gyroscope was denied.');
-          }
-        })
-        .catch(console.error);
-    } else {
-      console.log('Gyroscope API is not supported in this browser.');
-    }
-
-    function handleOrientation(event) {
-      // 更新页面上的数据
-      document.getElementById('alpha').textContent = event.alpha.toFixed(2);
-      document.getElementById('beta').textContent = event.beta.toFixed(2);
-      document.getElementById('gamma').textContent = event.gamma.toFixed(2);
-    }
-  </script>
+    alpha:<span id="alpha"></span><br/>
+    beta:<span id="beta"></span><br/>
+    gamma:<span id="gamma"></span><br/>
+   
 </body>
-</html>
+<script>
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function (event) {  
+            var a = document.getElementById('alpha'),
+                b = document.getElementById('beta'),
+                g = document.getElementById('gamma'),
+                alpha = event.alpha,
+                beta = event.beta,
+                gamma = event.gamma;
+                
+            a.innerHTML = Math.round(alpha); // 水平旋转
+            b.innerHTML = Math.round(beta);// 前后反转
+            g.innerHTML = Math.round(gamma);// 左右翻转
+ 
+        }, false);
+    } else {
+        document.querySelector('body').innerHTML = '你的浏览器不支持陀螺仪';
+    }
+</script>
