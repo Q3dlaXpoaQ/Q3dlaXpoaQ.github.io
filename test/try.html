@@ -134,7 +134,7 @@
       var wsUrl = wsUrlInput.value;
       var wsPort = wsPortInput.value;
 
-      ws = new WebSocket('ws://' + wsUrl + ':' + wsPort);
+      ws = new WebSocket('wss://' + wsUrl + ':' + wsPort);
 
       ws.onopen = function() {
         console.log('Connected to WebSocket server');
