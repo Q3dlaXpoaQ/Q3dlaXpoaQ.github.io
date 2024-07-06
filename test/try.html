@@ -9,6 +9,7 @@
 
 <body>
   <div>
+    <button onclick="clickMe()">获取权限</button>
     <button onclick="connectToWebSocket()">Connect</button>
     <p id="system_type">系统类型</p>
     <p id="z">z轴</p>
@@ -45,6 +46,19 @@
         } else {
             return 'Other';
         }
+    }
+
+    function clickMe() {
+      var system_name = getSystemType();
+      system_type.innerText = '系统类型: ' + system_name;
+
+      if (system_name === "iOS") {
+        // Code for iOS
+      } else if (system_name === "Android") {
+        // Code for Android
+      } else if (system_name === "Linux") {
+        // Code for Linux
+      }
     }
 
     function connectToWebSocket() {
