@@ -10,32 +10,24 @@
 <body>
   <div>
     <button onclick="clickMe()">获取权限</button>
-    <button onclick="connectToWebSocket()">Connect</button>
+   
 
     <p id="system_type">系统类型</p>
     <p id="z">z轴</p>
     <p id="x">x轴</p>
     <p id="y">y轴</p>
 
-    <label for="wsUrl">WebSocket URL:</label>
-    <input type="text" id="wsUrl" placeholder="Enter WebSocket URL">
-    <label for="wsPort">Port:</label>
-    <input type="text" id="wsPort" placeholder="Enter port number">
+  
+  <iframe src="file:///D:/Internet/Web/Car/index.html" style="width: 100%; height: 500px; border: none;"></iframe>
   </div>
   
-</body>
+  <script>
+    var z = document.getElementById('z');
+    var x = document.getElementById('x');
+    var y = document.getElementById('y');
+    var system_type = document.getElementById('system_type');
 
-</html>
-    <script>
-      
-    var z = document.getElementById('z')
-    var x = document.getElementById('x')
-    var y = document.getElementById('y')
-    var system_type = document.getElementById('system_type')
 
-    var wsUrlInput = document.getElementById('wsUrl');
-    var wsPortInput = document.getElementById('wsPort');
-    var ws;
     function getSystemType() {
         var ua = navigator.userAgent;
         // 检查 Android 系统
@@ -128,37 +120,9 @@
       z.innerText = orientation.z;
     }
   
-     function connectToWebSocket() {
-      var system_name = getSystemType();
 
-      var wsUrl = wsUrlInput.value;
-      var wsPort = wsPortInput.value;
-
-      ws = new WebSocket('wss://' + wsUrl + ':' + wsPort);
-
-      ws.onopen = function() {
-        console.log('Connected to WebSocket server');
-        sendXYZData();
-      };
-
-      ws.onclose = function() {
-        console.log('Disconnected from WebSocket server');
-      };
-    }
-
-   function sendXYZData() {
-      setInterval(function() {
-        var alpha = Math.round(Math.random() * 360 * 1000) / 1000; // Random value for demonstration
-        var beta = Math.round(Math.random() * 180 * 1000) / 1000; // Random value for demonstration
-        var gamma = Math.round(Math.random() * 90 * 1000) / 1000; // Random value for demonstration
-
-        if (ws.readyState === WebSocket.OPEN) {
-          ws.send(JSON.stringify({ alpha: alpha, beta: beta, gamma: gamma }));
-        }
-      }, 1000);
-    }
-
-        
 
   </script>
 </body>
+
+</html>
