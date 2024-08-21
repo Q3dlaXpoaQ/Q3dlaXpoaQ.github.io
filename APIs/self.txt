@@ -1,0 +1,9 @@
+V2rayN:
+
+vless://83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6@bestcf.onecf.eu.org:2082?encryption=none&security=none&sni=v2rayn.q3dlaxpoaq-15b.workers.dev&fp=randomized&type=ws&host=v2rayn.q3dlaxpoaq-15b.workers.dev&path=%2F%3Fed%3D2048#v2rayn.q3dlaxpoaq-15b.workers.dev
+
+vless://83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6@104.19.62.86:443?encryption=none&security=tls&fp=randomized&type=ws&host=v2rayn.q3dlaxpoaq-15b.workers.dev&path=%2F%3Fed%3D2048#v2rayn.q3dlaxpoaq-15b.workers.dev
+//要开启443分片
+
+
+
