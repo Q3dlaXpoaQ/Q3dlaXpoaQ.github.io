@@ -14,10 +14,15 @@ vless://YXV0bzo4M2ZiY2RmZC00OGJiLTRkNTItOGFhNi03ZWI4ZDAxZGQ3YzZAYmVzdGNmLm9uZWNm
 
 vless://YXV0bzo4M2ZiY2RmZC00OGJiLTRkNTItOGFhNi03ZWI4ZDAxZGQ3YzZAMTA0LjE5LjYyLjg2OjIwODI?obfsParam=v2rayn.q3dlaxpoaq-15b.workers.dev&path=/?ed=2048&obfs=websocket
 
-UUID2:
+UUID1:
+83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6
 
+UUID2:
 c9d8ec22-5d6d-4491-b5c2-2998bc17c5d4
 
+
+VL2:
+90cd4a77-141a-43c9-991b-08263cfe9c10
 
 
 
