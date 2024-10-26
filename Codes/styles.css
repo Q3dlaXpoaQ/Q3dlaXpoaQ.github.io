@@ -36,7 +36,7 @@ h1, h2 {
 }
 
 pre {
-    background: #000000; /* 更黑的背景 */
+    background: #282c34; /* 更黑的背景 */
     padding: 10px;
     border-radius: 5px;
     overflow: auto;
@@ -46,7 +46,7 @@ pre {
 }
 
 .hljs {
-    background: #000000; /* 更黑的背景 */
+    background: #282c34; /* 更黑的背景 */
 }
 
 .hljs-ln-n::before{
