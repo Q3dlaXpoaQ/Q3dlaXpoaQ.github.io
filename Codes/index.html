@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/atom-one-dark.min.css">
+<body>
+
+<h1>Files</h1>
+<ul class="file-list" id="file-list">
+    <li class="file-item" onclick="loadFile('01bag.cpp')">01背包</li>
+    <li class="file-item" onclick="loadFile('st.cpp')">ST表</li>
+    <li class="file-item" onclick="loadFile('tmp.cpp')">字符串</li>
+</ul>
+
+<h2>当前文件: <span id="current-file" class="current-file">未选择文件</span></h2>
+<pre><code class="cpp line-numbers" id="code-block"></code></pre>
+<button class="copy-button" id="copy-button" onclick="copyCode()">复制代码</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script></head>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+@import url('https://proxy.chenwz.us.kg/https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://proxy.chenwz.us.kg/https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif; /* 正文字体 */
+    margin: 20px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+h1, h2 {
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif; /* 确保标题使用自定义字体 */
+}
+
+.file-list {
+    margin-bottom: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.file-item {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.file-item:hover {
+    background-color: #444;
+    color: #ffffff;
+}
+
+pre {
+    background: #000000; /* 更黑的背景 */
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    font-family: 'Roboto Mono', monospace; /* 代码字体 */
+    position: relative; /* 使按钮可以绝对定位 */
+    border: none; /* 去除边框 */
+}
+
+.hljs {
+    background: #000000; /* 更黑的背景 */
+}
+
+.hljs-ln-n::before{
+    padding-right: 20px; /* 增加行号与代码之间的间隙 */
+    color: #888; /* 行号颜色 */
+}
+
+code {
+    font-family: 'Roboto Mono', monospace; /* 代码字体 */
+}
+
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+.current-file {
+    margin: 10px 0;
+    color: #ffffff;
+}
