@@ -1,0 +1,234 @@
+/* style.css */
+body {
+    background-color: #121212; /* 深色背景 */
+    color: #ffffff; /* 白色字体 */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    margin: 0; /* 移除默认边距 */
+    padding: 0; /* 移除默认填充 */
+}
+
+header {
+    background-color: #1e1e1e; /* 深色头部 */
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* 隐藏菜单默认样式 */
+#index_menu {
+    padding-left: 5%;
+    display: flex;
+    align-items: center;
+    opacity: 0; /* 初始透明度 */
+    transform: translateX(-20px); /* 初始水平位移 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 过渡效果 */
+}
+
+#index_menu.visible {
+    opacity: 1; /* 变为不透明 */
+    transform: translateX(0); /* 回到正常位置 */
+}
+
+#index_menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* 默认横向排列 */
+}
+
+#index_menu li {
+    margin-right: 20px; /* 设置菜单项间距 */
+}
+
+#index_menu a {
+    text-decoration: none;
+    color: #8a2be2; /* 主题色 */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#index_menu a:hover {
+    background-color: #3d0e6c; /* 悬停效果 */
+}
+
+#menu_media {
+    /*can't be selected*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+#menu_media img {
+    width: 24px; /* 调整图标大小 */
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #8a2be2; /* 主题色 */
+}
+
+article {
+    margin: 20px auto; /* 水平居中 */
+    padding: 20px;
+    background: #222222; /* 文章背景 */
+    border: 1px solid #444; /* 边框 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 800px; /* 最大宽度 */
+}
+
+article:hover {
+    background: #333333; /* 悬停背景 */
+}
+
+footer {
+    background-color: #1e1e1e; /* 深色底部 */
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #444; /* 边框 */
+    color: #aaaaaa;
+}
+
+footer a {
+    color: #8a2be2; /* 主题色 */
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-left: 10%; /* 留出左边距 */
+}
+
+p a{
+    color: #8a2be2; /* 主题色 */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}   
+
+/* 优化标题的样式 */
+article {
+    display: inline-block; /* 使标题宽度自适应内容 */
+    margin-left: 10%; /* 水平居中 */
+    padding-left: 20px; /* 增加内边距 */
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #1e1e1e; /* 深色背景 */
+    border-left: 5px solid #8a2be2; /* 左边的彩色条 */
+    border-radius: 5px; /* 圆角 */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* 阴影 */
+    font-size: 25px; /* 字体大小 */
+    color: #ffffff; /* 字体颜色 */
+}
+
+article span {
+    font-weight: bold; /* 加粗强调 */
+    color: #8a2be2; /* 主题色 */
+}
+
+@media (max-width: 768px) {
+    #index_menu {
+        position: fixed; /* 固定在视口 */
+        top: 0;
+        left: 0;
+        width: 60%; /* 占据屏幕的100%宽度 */
+        height: 100%; /* 占满整个高度 */
+        display: flex; /* 使其成为flex容器 */
+        flex-direction: column; /* 竖向排列 */
+        padding: 20px; /* 增加内边距 */
+        background: rgba(0, 0, 0, 0.9); /* 深色背景 */
+        opacity: 0; /* 初始状态透明 */
+        transform: translateX(-100%); /* 从左侧滑出 */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* 过渡效果 */
+    }
+
+    /* 当visible类被添加时，改变状态 */
+    #index_menu.visible {
+        opacity: 1; /* 显示菜单时不透明 */
+        transform: translateX(0); /* 移动到正常位置 */
+    }
+
+    #index_menu ul {
+        padding: 0; /* 重置内边距 */
+        flex-direction: column; /* 子菜单竖向排列 */
+        width: 80%; /* 使用60%的宽度，靠近左侧 */
+        margin-left: 0; /* 紧贴屏幕左侧 */
+    }
+
+    #index_menu li {
+        margin-top: 15px; /* 垂直间距 */
+        text-align: left; /* 左对齐文本 */
+        width: 100%; /* 确保全宽度 */
+        
+    }
+
+    #index_menu a {
+        display: block; /* 使链接占用全部宽度 */
+        padding: 15px; /* 增加内边距 */
+        text-align: left; /* 靠左对齐文本 */
+        width: 100%; /* 使用全宽度 */
+        border-radius: 5px; /* 圆角 */
+        transition: background-color 0.3s; /* 悬停效果 */
+
+    }
+
+    #index_menu a:hover {
+        background-color: rgba(138, 43, 226, 0.5); /* 悬停效果 */
+    }
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        z-index: 0;
+        display: none;
+    }  
+    #overlay.visible {
+        display: block;
+    }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -1;
+    display: none;
+}  
+#overlay.visible {
+    display: block;
+}
+
+/*用户选择文字颜色为#8a2be2,透明度为0.5*/
+::-moz-selection {
+    background: rgba(138, 43, 226, 0.5);       
+}
+::selection {
+    background: rgba(138, 43, 226, 0.5);       
+}
+
+
+
+
+
+
+
+
+
