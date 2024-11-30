@@ -24,6 +24,14 @@ c9d8ec22-5d6d-4491-b5c2-2998bc17c5d4
 VL2:
 90cd4a77-141a-43c9-991b-08263cfe9c10
 
+Google API key:
+
+AIzaSyA5-RPQOauUypZcDvQsEwD0RugA4eOMJO4
+
+Gpt3 API key:
+
+sk-97ENvmUcn0hQkwtMfUQFw4PQhWtpoAdMncJjKA7YHGsavxa1
+
 
 
 
