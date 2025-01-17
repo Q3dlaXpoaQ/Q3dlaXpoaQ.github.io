@@ -55,7 +55,7 @@ header {
 }
 
 #menu_media {
-    /*can't be selected*/
+    /* can't be selected */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -108,14 +108,14 @@ p {
     margin-left: 10%; /* 留出左边距 */
 }
 
-p a{
+p a {
     color: #8a2be2; /* 主题色 */
     text-decoration: none;
 }
 
 p a:hover {
     text-decoration: underline;
-}   
+}
 
 /* 优化标题的样式 */
 article {
@@ -143,7 +143,7 @@ article span {
         position: fixed; /* 固定在视口 */
         top: 0;
         left: 0;
-        width: 60%; /* 占据屏幕的100%宽度 */
+        width: 100%; /* 占据屏幕的100%宽度 */
         height: 100%; /* 占满整个高度 */
         display: flex; /* 使其成为flex容器 */
         flex-direction: column; /* 竖向排列 */
@@ -163,15 +163,14 @@ article span {
     #index_menu ul {
         padding: 0; /* 重置内边距 */
         flex-direction: column; /* 子菜单竖向排列 */
-        width: 80%; /* 使用60%的宽度，靠近左侧 */
+        width: 100%; /* 使用全宽度 */
         margin-left: 0; /* 紧贴屏幕左侧 */
     }
 
     #index_menu li {
-        margin-top: 15px; /* 垂直间距 */
+        margin-top: 10px; /* 垂直间距 */
         text-align: left; /* 左对齐文本 */
         width: 100%; /* 确保全宽度 */
-        
     }
 
     #index_menu a {
@@ -181,12 +180,13 @@ article span {
         width: 100%; /* 使用全宽度 */
         border-radius: 5px; /* 圆角 */
         transition: background-color 0.3s; /* 悬停效果 */
-
+        font-size: 20px; /* 增大字体大小 */
     }
 
     #index_menu a:hover {
         background-color: rgba(138, 43, 226, 0.5); /* 悬停效果 */
     }
+
     #overlay {
         position: fixed;
         top: 0;
@@ -194,41 +194,45 @@ article span {
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0);
-        z-index: 0;
+        z-index: 99; /* 确保透明层在菜单之上 */
         display: none;
     }  
     #overlay.visible {
+        background-color: rgba(0, 0, 0, 0.5); /* 添加背景颜色以便更明显 */
         display: block;
     }
+
+    /* 调整小屏幕设备上的字体大小 */
+    body {
+        font-size: 16px; /* 增大字体大小 */
+    }
+
+    h1 {
+        font-size: 24px; /* 增大字体大小 */
+    }
+
+    article {
+        font-size: 20px; /* 增大字体大小 */
+        margin-left: 5%; /* 调整左边距 */
+        margin-right: 5%; /* 调整右边距 */
+        padding: 15px; /* 调整内边距 */
+    }
+
+    footer {
+        font-size: 18px; /* 增大字体大小 */
+    }
+
+    footer a {
+        font-size: 18px; /* 增大字体大小 */
+    }
+
+    p {
+        font-size: 18px; /* 增大字体大小 */
+        margin-left: 5%; /* 调整左边距 */
+        margin-right: 5%; /* 调整右边距 */
+    }
+
+    p a {
+        font-size: 18px; /* 增大字体大小 */
+    }
 }
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    z-index: -1;
-    display: none;
-}  
-#overlay.visible {
-    display: block;
-}
-
-/*用户选择文字颜色为#8a2be2,透明度为0.5*/
-::-moz-selection {
-    background: rgba(138, 43, 226, 0.5);       
-}
-::selection {
-    background: rgba(138, 43, 226, 0.5);       
-}
-
-
-
-
-
-
-
-
-
