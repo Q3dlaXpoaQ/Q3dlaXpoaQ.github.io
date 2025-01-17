@@ -14,14 +14,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // 点击折叠菜单按钮时的事件处理
     toggleMenuButton.addEventListener('click', () => {
+        console.log('Toggle button clicked');
         isMenuVisible = !isMenuVisible;
         if (isMenuVisible) {
-            indexMenu.style.display = 'flex'; // 显示菜单
+            console.log('Menu is now visible');
+            indexMenu.style.display = 'block'; // 显示菜单
             setTimeout(() => {
                 indexMenu.classList.add('visible'); // 添加 visible 类以触发动画
                 overlay.style.display = 'block'; // 显示透明层  
             }, 10); // 小延迟以防止直接应用 visible 类导致动画失效
         } else {
+            console.log('Menu is now hidden');
             indexMenu.classList.remove('visible'); // 移除 visible 类
             setTimeout(() => {
                 indexMenu.style.display = 'none'; // 在动画结束后隐藏菜单
@@ -33,6 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // 点击透明层时也可以关闭菜单
     overlay.addEventListener('click', () => {
         if (isMenuVisible) {
+            console.log('Overlay clicked');
             isMenuVisible = false;
             indexMenu.classList.remove('visible'); // 移除 visible 类
             setTimeout(() => {
@@ -41,6 +45,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }, 300); //与CSS动画时长匹配
         }
     });
-
-
 });
