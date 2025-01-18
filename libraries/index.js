@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // 点击透明层时也可以关闭菜单
-    overlay.addEventListener('click', () => {
+    indexMenu.addEventListener('click', () => {
         if (isMenuVisible) {
             console.log('Overlay clicked');
             isMenuVisible = false;
