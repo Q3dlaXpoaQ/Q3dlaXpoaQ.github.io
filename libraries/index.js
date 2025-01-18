@@ -46,3 +46,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+$(document).ready(function() {
+    // 读取 records.json 文件并显示最后一条记录
+    $.getJSON('records.json', function(data) {
+        if (data.length > 0) {
+            var lastRecord = data[data.length - 1];
+            $('#update-info strong').text('最近更新: ' + lastRecord.title);
+            $('#update-time').text(lastRecord.date);
+        }
+    });
+
+    // 设置1分钟后隐藏 update-info
+    setTimeout(function() {
+        $('#update-info').fadeOut();
+    }, 60000);
+
+    // 添加点击事件以隐藏 update-info
+    $('#update-info').click(function() {
+        $(this).fadeOut();
+    });
+});
