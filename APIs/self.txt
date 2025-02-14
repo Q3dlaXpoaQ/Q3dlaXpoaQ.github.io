@@ -1,27 +1,5 @@
-V2rayN:
 
-vless://83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6@bestcf.onecf.eu.org:2082?encryption=none&security=none&sni=v2rayn.q3dlaxpoaq-15b.workers.dev&fp=randomized&type=ws&host=v2rayn.q3dlaxpoaq-15b.workers.dev&path=%2F%3Fed%3D2048#v2rayn.q3dlaxpoaq-15b.workers.dev
-
-vless://83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6@104.19.62.86:443?encryption=none&security=tls&fp=randomized&type=ws&host=v2rayn.q3dlaxpoaq-15b.workers.dev&path=%2F%3Fed%3D2048#v2rayn.q3dlaxpoaq-15b.workers.dev
-//要开启443分片
-
-vless://83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6@104.19.62.86:2082?encryption=none&security=none&fp=randomized&type=ws&host=v2rayn.q3dlaxpoaq-15b.workers.dev&path=%2F%3Fed%3D2048#v2rayn.q3dlaxpoaq-15b.workers.dev
-//2082端口不用
-
-Clash:
-
-vless://YXV0bzo4M2ZiY2RmZC00OGJiLTRkNTItOGFhNi03ZWI4ZDAxZGQ3YzZAYmVzdGNmLm9uZWNmLmV1Lm9yZzoyMDgy?obfsParam=v2rayn.q3dlaxpoaq-15b.workers.dev&path=/?ed=2048&obfs=websocket
-
-vless://YXV0bzo4M2ZiY2RmZC00OGJiLTRkNTItOGFhNi03ZWI4ZDAxZGQ3YzZAMTA0LjE5LjYyLjg2OjIwODI?obfsParam=v2rayn.q3dlaxpoaq-15b.workers.dev&path=/?ed=2048&obfs=websocket
-
-UUID1:
-83fbcdfd-48bb-4d52-8aa6-7eb8d01dd7c6
-
-UUID2:
-c9d8ec22-5d6d-4491-b5c2-2998bc17c5d4
-
-
-VL2:
+VL:
 90cd4a77-141a-43c9-991b-08263cfe9c10
 
 Google API key:
@@ -31,6 +9,9 @@ AIzaSyA5-RPQOauUypZcDvQsEwD0RugA4eOMJO4
 Gpt3 API key:
 
 sk-97ENvmUcn0hQkwtMfUQFw4PQhWtpoAdMncJjKA7YHGsavxa1
+
+DeepSeek:
+sk-3379fe14c76c46349427248662badf53
 
 
 
