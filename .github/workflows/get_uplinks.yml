@@ -34,7 +34,9 @@ jobs:
     - name: Check for changes and commit
       run: |
         git add APIs/uplinks.txt
-        git diff --staged --quiet || (
+        git diff --staged --quiet
+        if ($LASTEXITCODE -ne 0) {
           git commit -m "Update output.txt"
           git push "https://${{ github.actor }}:${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.head_ref || github.ref_name }}
-        )
+        }
+    
