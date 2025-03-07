@@ -1,0 +1,42 @@
+name: Update Nodes API
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小时的第 0 分钟运行
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # 或者指定具体的版本，例如 '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install requests selenium chromedriver-autoinstaller
+
+    - name: Run Python script
+      run: |
+        cd APIs/
+        python get.py > APIs/output.txt
+
+    - name: Check for changes and commit
+      run: |
+        git add APIs/output.txt
+        git diff --staged --quiet || (
+          git commit -m "Update output.txt"
+          git push "https://${{ github.actor }}:${{ secrets.PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.head_ref || github.ref_name }}
+        )
