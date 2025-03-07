@@ -68,9 +68,8 @@ if __name__ == "__main__":
             if span1 and span2:
                 f.write(f"{span1}\n")
                 f.write(f"{span2}\n")
-                print("VPN 信息已写入 uplink.txt")  # 控制台输出，提示已写入文件
+                print("write successfully")
             else:
-                f.write("未能成功获取 VPN 信息。\n")
-                print("未能成功获取 VPN 信息。") # 控制台输出，提示获取失败
+                f.write("Couldn't get VPN information\n")
     except Exception as e:
-        print(f"写入文件时发生错误: {e}")
+        print(f"written error: {e}")
