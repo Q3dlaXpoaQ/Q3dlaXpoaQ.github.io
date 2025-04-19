@@ -2,17 +2,6 @@
 VL:
 90cd4a77-141a-43c9-991b-08263cfe9c10
 
-Google API key:
-
-AIzaSyA5-RPQOauUypZcDvQsEwD0RugA4eOMJO4
-
-Gpt3 API key:
-
-sk-97ENvmUcn0hQkwtMfUQFw4PQhWtpoAdMncJjKA7YHGsavxa1
-
-DeepSeek:
-sk-3379fe14c76c46349427248662badf53
-
 
 
 
